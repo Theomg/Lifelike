@@ -8,7 +8,7 @@ export interface CanvasProps {
                               neighborQty: number[],
                               settings: RenderSettings
                              }
-export interface CanvasState {}
+interface CanvasState {}
 
 export class Canvas extends React.Component<CanvasProps, CanvasState>{
   private ctx : CanvasRenderingContext2D;
@@ -22,7 +22,7 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
     const maxAngle = 360/8;
     const initialHue = ~~(Math.random() * 360);
     const angle = ~~(Math.random() * (maxAngle - minAngle)) + minAngle;
-    const minLight = 70;
+    const minLight = 60;
     const maxLight = 87;
     for(let i = 0;i < 9;i++){
       const hue = (initialHue + angle * i) % 360;
@@ -64,12 +64,17 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     const scale = this.props.settings.scale;
     this.ctx.setTransform(scale, 0, 0, scale, this.canvas.width/2, this.canvas.height/2);
-    this.props.cells.forEach((pos, i)=>{
+    const cellsLen = this.props.cells.length;
+    const [camx, camy] = this.props.settings.pos;
+    for(let i = 0;i < cellsLen;i++){
+      const [x, y] = this.props.cells[i];
+      if(x < camx || x > camx + this.canvas.width ||
+         y < camy || y > camy + this.canvas.height){
+          continue;
+      }
       this.ctx.fillStyle = this.colors[this.props.neighborQty[i]];
-      const [x, y] = pos;
-      const [camx, camy] = this.props.settings.pos;
       this.ctx.fillRect(x - camx - this.canvas.width/2, y - camy - this.canvas.height/2, 1, 1);
-    });
+    }
     this.ctx.setTransform(1,0,0,1,0,0);
     this.rafID = requestAnimationFrame((time) => this.draw(time));
   }

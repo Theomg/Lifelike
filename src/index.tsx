@@ -5,7 +5,7 @@ import 'normalize.css';
 import './main.css';
 
 import {Canvas} from './components/Canvas';
-import {Automata} from './automata';
+import Automata from './automata/automata';
 import {InitSettings, RenderSettings} from "./Settings";
 
 const cells: [number,number][] = [];
@@ -25,6 +25,7 @@ const settings: InitSettings = {
 }
 
 const automata = new Automata(cells, neighborQty, settings);
+automata.loop();
 
 ReactDOM.render(
   <Canvas cells={cells} neighborQty={neighborQty} settings={drawSettings}/>,
