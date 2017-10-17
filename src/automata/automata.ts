@@ -17,7 +17,7 @@ export default class Automata{
     this.init();
   }
 
-  //Works ok for smaller simulations, but a nicer hash function with a HashMap+buckets would be nicer
+  //Works ok for smaller simulations, but a nicer hash function with a HashMap+buckets would be better
   private hash(pair: numberTuple): number{
     return (pair[0] * 2 ** 26) + pair[1];
   }
@@ -103,6 +103,7 @@ export default class Automata{
       }
     }
 
+    //removes cells by swapping with last element, avoiding shifting the remaining elements back
     while(removeIdx.length > 0){
       const idx = removeIdx.pop();
       this.cellMap.delete(this.hash(this.cells[idx]));

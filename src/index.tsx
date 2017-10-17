@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+
 import 'normalize.css';
 import './main.css';
 
@@ -24,8 +26,13 @@ const settings: InitSettings = {
   maxFPS: 60
 }
 
-const automata = new Automata(cells, neighborQty, settings);
-automata.loop();
+function init(){
+  OfflinePluginRuntime.install();
+  
+  const automata = new Automata(cells, neighborQty, settings);
+  automata.loop();
+}
+init();
 
 ReactDOM.render(
   <Canvas cells={cells} neighborQty={neighborQty} settings={drawSettings}/>,
