@@ -1,0 +1,1728 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Canvas should render correctly 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <Canvas
+    cells={Array []}
+    neighborQty={Array []}
+    settings={
+      Object {
+        "blur": 1,
+        "pos": Array [
+          0,
+          0,
+        ],
+        "scale": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": Canvas {
+      "_reactInternalFiber": FiberNode {
+        "_debugID": 9,
+        "_debugIsCurrentlyTiming": false,
+        "_debugOwner": FiberNode {
+          "_debugID": 8,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "firstEffect": FiberNode {
+            "_debugID": 10,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": null,
+            "effectTag": 128,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "className": "canvas",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": [Function],
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <canvas
+              class="canvas"
+              height="0"
+              width="0"
+            />,
+            "tag": 5,
+            "type": "canvas",
+            "updateQueue": null,
+          },
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": [Circular],
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "cells": Array [],
+              "neighborQty": Array [],
+              "settings": Object {
+                "blur": 1,
+                "pos": Array [
+                  0,
+                  0,
+                ],
+                "scale": 1,
+              },
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "cells": Array [],
+              "neighborQty": Array [],
+              "settings": Object {
+                "blur": 1,
+                "pos": Array [
+                  0,
+                  0,
+                ],
+                "scale": 1,
+              },
+            },
+          },
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 6,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 6,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 1,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <canvas
+                    class="canvas"
+                    height="0"
+                    width="0"
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "isScheduled": false,
+                "nextScheduledRoot": null,
+                "pendingContext": null,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "callbackList": null,
+                "first": Object {
+                  "callback": null,
+                  "isForced": false,
+                  "isReplace": false,
+                  "isTopLevelUnmount": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "cells": Array [],
+                          "neighborQty": Array [],
+                          "settings": Object {
+                            "blur": 1,
+                            "pos": Array [
+                              0,
+                              0,
+                            ],
+                            "scale": 1,
+                          },
+                        }
+                      }
+                    />,
+                  },
+                  "priorityLevel": 1,
+                },
+                "hasForceUpdate": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "isForced": false,
+                  "isReplace": false,
+                  "isTopLevelUnmount": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "cells": Array [],
+                          "neighborQty": Array [],
+                          "settings": Object {
+                            "blur": 1,
+                            "pos": Array [
+                              0,
+                              0,
+                            ],
+                            "scale": 1,
+                          },
+                        }
+                      }
+                    />,
+                  },
+                  "priorityLevel": 1,
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 0,
+            "firstEffect": FiberNode {
+              "_debugID": 10,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": null,
+              "effectTag": 128,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "className": "canvas",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <canvas
+                class="canvas"
+                height="0"
+                width="0"
+              />,
+              "tag": 5,
+              "type": "canvas",
+              "updateQueue": null,
+            },
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "cells": Array [],
+                    "neighborQty": Array [],
+                    "settings": Object {
+                      "blur": 1,
+                      "pos": Array [
+                        0,
+                        0,
+                      ],
+                      "scale": 1,
+                    },
+                  }
+                }
+              />,
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <canvas
+                  class="canvas"
+                  height="0"
+                  width="0"
+                />
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "isScheduled": false,
+              "nextScheduledRoot": null,
+              "pendingContext": null,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_debugSource": null,
+        "alternate": null,
+        "child": FiberNode {
+          "_debugID": 10,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": null,
+          "alternate": null,
+          "child": null,
+          "effectTag": 128,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "className": "canvas",
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": [Function],
+          "return": [Circular],
+          "sibling": null,
+          "stateNode": <canvas
+            class="canvas"
+            height="0"
+            width="0"
+          />,
+          "tag": 5,
+          "type": "canvas",
+          "updateQueue": null,
+        },
+        "effectTag": 5,
+        "firstEffect": FiberNode {
+          "_debugID": 10,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": null,
+          "alternate": null,
+          "child": null,
+          "effectTag": 128,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "className": "canvas",
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": [Function],
+          "return": [Circular],
+          "sibling": null,
+          "stateNode": <canvas
+            class="canvas"
+            height="0"
+            width="0"
+          />,
+          "tag": 5,
+          "type": "canvas",
+          "updateQueue": null,
+        },
+        "index": 0,
+        "internalContextTag": 0,
+        "key": null,
+        "lastEffect": FiberNode {
+          "_debugID": 10,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": null,
+          "alternate": null,
+          "child": null,
+          "effectTag": 128,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "className": "canvas",
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": [Function],
+          "return": [Circular],
+          "sibling": null,
+          "stateNode": <canvas
+            class="canvas"
+            height="0"
+            width="0"
+          />,
+          "tag": 5,
+          "type": "canvas",
+          "updateQueue": null,
+        },
+        "memoizedProps": Object {
+          "cells": Array [],
+          "neighborQty": Array [],
+          "settings": Object {
+            "blur": 1,
+            "pos": Array [
+              0,
+              0,
+            ],
+            "scale": 1,
+          },
+        },
+        "memoizedState": null,
+        "nextEffect": null,
+        "pendingProps": null,
+        "pendingWorkPriority": 0,
+        "ref": null,
+        "return": FiberNode {
+          "_debugID": 8,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "firstEffect": FiberNode {
+            "_debugID": 10,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": null,
+            "effectTag": 128,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "className": "canvas",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": [Function],
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <canvas
+              class="canvas"
+              height="0"
+              width="0"
+            />,
+            "tag": 5,
+            "type": "canvas",
+            "updateQueue": null,
+          },
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": [Circular],
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "cells": Array [],
+              "neighborQty": Array [],
+              "settings": Object {
+                "blur": 1,
+                "pos": Array [
+                  0,
+                  0,
+                ],
+                "scale": 1,
+              },
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "cells": Array [],
+              "neighborQty": Array [],
+              "settings": Object {
+                "blur": 1,
+                "pos": Array [
+                  0,
+                  0,
+                ],
+                "scale": 1,
+              },
+            },
+          },
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 6,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 6,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 1,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <canvas
+                    class="canvas"
+                    height="0"
+                    width="0"
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "isScheduled": false,
+                "nextScheduledRoot": null,
+                "pendingContext": null,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "callbackList": null,
+                "first": Object {
+                  "callback": null,
+                  "isForced": false,
+                  "isReplace": false,
+                  "isTopLevelUnmount": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "cells": Array [],
+                          "neighborQty": Array [],
+                          "settings": Object {
+                            "blur": 1,
+                            "pos": Array [
+                              0,
+                              0,
+                            ],
+                            "scale": 1,
+                          },
+                        }
+                      }
+                    />,
+                  },
+                  "priorityLevel": 1,
+                },
+                "hasForceUpdate": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "isForced": false,
+                  "isReplace": false,
+                  "isTopLevelUnmount": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "cells": Array [],
+                          "neighborQty": Array [],
+                          "settings": Object {
+                            "blur": 1,
+                            "pos": Array [
+                              0,
+                              0,
+                            ],
+                            "scale": 1,
+                          },
+                        }
+                      }
+                    />,
+                  },
+                  "priorityLevel": 1,
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 0,
+            "firstEffect": FiberNode {
+              "_debugID": 10,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": null,
+              "effectTag": 128,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "className": "canvas",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <canvas
+                class="canvas"
+                height="0"
+                width="0"
+              />,
+              "tag": 5,
+              "type": "canvas",
+              "updateQueue": null,
+            },
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "cells": Array [],
+                    "neighborQty": Array [],
+                    "settings": Object {
+                      "blur": 1,
+                      "pos": Array [
+                        0,
+                        0,
+                      ],
+                      "scale": 1,
+                    },
+                  }
+                }
+              />,
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <canvas
+                  class="canvas"
+                  height="0"
+                  width="0"
+                />
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "isScheduled": false,
+              "nextScheduledRoot": null,
+              "pendingContext": null,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "sibling": null,
+        "stateNode": [Circular],
+        "tag": 2,
+        "type": [Function],
+        "updateQueue": null,
+      },
+      "_reactInternalInstance": Object {},
+      "canvas": <canvas
+        class="canvas"
+        height="0"
+        width="0"
+      />,
+      "colors": Array [
+        "hsl(180, 100%, 73%)",
+        "hsl(212, 100%, 73%)",
+        "hsl(244, 100%, 73%)",
+        "hsl(276, 100%, 73%)",
+        "hsl(308, 100%, 73%)",
+        "hsl(340, 100%, 73%)",
+        "hsl(12, 100%, 73%)",
+        "hsl(44, 100%, 73%)",
+        "hsl(76, 100%, 73%)",
+      ],
+      "context": Object {},
+      "ctx": CanvasRenderingContext2D {
+        "canvas": <canvas
+          class="canvas"
+          height="0"
+          width="0"
+        />,
+        "createPattern": [Function],
+        "drawImage": [Function],
+      },
+      "props": Object {
+        "cells": Array [],
+        "neighborQty": Array [],
+        "settings": Object {
+          "blur": 1,
+          "pos": Array [
+            0,
+            0,
+          ],
+          "scale": 1,
+        },
+      },
+      "rafID": undefined,
+      "refs": Object {},
+      "state": null,
+      "updater": Object {
+        "enqueueForceUpdate": [Function],
+        "enqueueReplaceState": [Function],
+        "enqueueSetState": [Function],
+        "isMounted": [Function],
+      },
+    },
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "cells": Array [],
+      "neighborQty": Array [],
+      "settings": Object {
+        "blur": 1,
+        "pos": Array [
+          0,
+          0,
+        ],
+        "scale": 1,
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": <canvas
+        class="canvas"
+        height="0"
+        width="0"
+      />,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "className": "canvas",
+      },
+      "ref": [Function],
+      "rendered": Array [
+        undefined,
+      ],
+      "type": "canvas",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": Canvas {
+        "_reactInternalFiber": FiberNode {
+          "_debugID": 9,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": FiberNode {
+            "_debugID": 8,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "firstEffect": FiberNode {
+              "_debugID": 10,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": null,
+              "effectTag": 128,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "className": "canvas",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <canvas
+                class="canvas"
+                height="0"
+                width="0"
+              />,
+              "tag": 5,
+              "type": "canvas",
+              "updateQueue": null,
+            },
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 6,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 6,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "pendingWorkPriority": 1,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <canvas
+                      class="canvas"
+                      height="0"
+                      width="0"
+                    />
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "isScheduled": false,
+                  "nextScheduledRoot": null,
+                  "pendingContext": null,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "callbackList": null,
+                  "first": Object {
+                    "callback": null,
+                    "isForced": false,
+                    "isReplace": false,
+                    "isTopLevelUnmount": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "cells": Array [],
+                            "neighborQty": Array [],
+                            "settings": Object {
+                              "blur": 1,
+                              "pos": Array [
+                                0,
+                                0,
+                              ],
+                              "scale": 1,
+                            },
+                          }
+                        }
+                      />,
+                    },
+                    "priorityLevel": 1,
+                  },
+                  "hasForceUpdate": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "isForced": false,
+                    "isReplace": false,
+                    "isTopLevelUnmount": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "cells": Array [],
+                            "neighborQty": Array [],
+                            "settings": Object {
+                              "blur": 1,
+                              "pos": Array [
+                                0,
+                                0,
+                              ],
+                              "scale": 1,
+                            },
+                          }
+                        }
+                      />,
+                    },
+                    "priorityLevel": 1,
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 0,
+              "firstEffect": FiberNode {
+                "_debugID": 10,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": null,
+                "effectTag": 128,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "className": "canvas",
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "pendingWorkPriority": 0,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <canvas
+                  class="canvas"
+                  height="0"
+                  width="0"
+                />,
+                "tag": 5,
+                "type": "canvas",
+                "updateQueue": null,
+              },
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "cells": Array [],
+                      "neighborQty": Array [],
+                      "settings": Object {
+                        "blur": 1,
+                        "pos": Array [
+                          0,
+                          0,
+                        ],
+                        "scale": 1,
+                      },
+                    }
+                  }
+                />,
+              },
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <canvas
+                    class="canvas"
+                    height="0"
+                    width="0"
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "isScheduled": false,
+                "nextScheduledRoot": null,
+                "pendingContext": null,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": null,
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "cells": Array [],
+                  "neighborQty": Array [],
+                  "settings": Object {
+                    "blur": 1,
+                    "pos": Array [
+                      0,
+                      0,
+                    ],
+                    "scale": 1,
+                  },
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "cells": Array [],
+                  "neighborQty": Array [],
+                  "settings": Object {
+                    "blur": 1,
+                    "pos": Array [
+                      0,
+                      0,
+                    ],
+                    "scale": 1,
+                  },
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 10,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": null,
+            "effectTag": 128,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "className": "canvas",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": [Function],
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <canvas
+              class="canvas"
+              height="0"
+              width="0"
+            />,
+            "tag": 5,
+            "type": "canvas",
+            "updateQueue": null,
+          },
+          "effectTag": 5,
+          "firstEffect": FiberNode {
+            "_debugID": 10,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": null,
+            "effectTag": 128,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "className": "canvas",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": [Function],
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <canvas
+              class="canvas"
+              height="0"
+              width="0"
+            />,
+            "tag": 5,
+            "type": "canvas",
+            "updateQueue": null,
+          },
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": FiberNode {
+            "_debugID": 10,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": null,
+            "effectTag": 128,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "className": "canvas",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": [Function],
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <canvas
+              class="canvas"
+              height="0"
+              width="0"
+            />,
+            "tag": 5,
+            "type": "canvas",
+            "updateQueue": null,
+          },
+          "memoizedProps": Object {
+            "cells": Array [],
+            "neighborQty": Array [],
+            "settings": Object {
+              "blur": 1,
+              "pos": Array [
+                0,
+                0,
+              ],
+              "scale": 1,
+            },
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "pendingWorkPriority": 0,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 8,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "firstEffect": FiberNode {
+              "_debugID": 10,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": null,
+              "effectTag": 128,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "className": "canvas",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <canvas
+                class="canvas"
+                height="0"
+                width="0"
+              />,
+              "tag": 5,
+              "type": "canvas",
+              "updateQueue": null,
+            },
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "cells": Array [],
+                "neighborQty": Array [],
+                "settings": Object {
+                  "blur": 1,
+                  "pos": Array [
+                    0,
+                    0,
+                  ],
+                  "scale": 1,
+                },
+              },
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "pendingWorkPriority": 0,
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 6,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 6,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "pendingWorkPriority": 1,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <canvas
+                      class="canvas"
+                      height="0"
+                      width="0"
+                    />
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "isScheduled": false,
+                  "nextScheduledRoot": null,
+                  "pendingContext": null,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "callbackList": null,
+                  "first": Object {
+                    "callback": null,
+                    "isForced": false,
+                    "isReplace": false,
+                    "isTopLevelUnmount": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "cells": Array [],
+                            "neighborQty": Array [],
+                            "settings": Object {
+                              "blur": 1,
+                              "pos": Array [
+                                0,
+                                0,
+                              ],
+                              "scale": 1,
+                            },
+                          }
+                        }
+                      />,
+                    },
+                    "priorityLevel": 1,
+                  },
+                  "hasForceUpdate": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "isForced": false,
+                    "isReplace": false,
+                    "isTopLevelUnmount": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "cells": Array [],
+                            "neighborQty": Array [],
+                            "settings": Object {
+                              "blur": 1,
+                              "pos": Array [
+                                0,
+                                0,
+                              ],
+                              "scale": 1,
+                            },
+                          }
+                        }
+                      />,
+                    },
+                    "priorityLevel": 1,
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 0,
+              "firstEffect": FiberNode {
+                "_debugID": 10,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": null,
+                "effectTag": 128,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "className": "canvas",
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "pendingWorkPriority": 0,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <canvas
+                  class="canvas"
+                  height="0"
+                  width="0"
+                />,
+                "tag": 5,
+                "type": "canvas",
+                "updateQueue": null,
+              },
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "cells": Array [],
+                      "neighborQty": Array [],
+                      "settings": Object {
+                        "blur": 1,
+                        "pos": Array [
+                          0,
+                          0,
+                        ],
+                        "scale": 1,
+                      },
+                    }
+                  }
+                />,
+              },
+              "nextEffect": null,
+              "pendingProps": null,
+              "pendingWorkPriority": 0,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <canvas
+                    class="canvas"
+                    height="0"
+                    width="0"
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "isScheduled": false,
+                "nextScheduledRoot": null,
+                "pendingContext": null,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": null,
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "cells": Array [],
+                  "neighborQty": Array [],
+                  "settings": Object {
+                    "blur": 1,
+                    "pos": Array [
+                      0,
+                      0,
+                    ],
+                    "scale": 1,
+                  },
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "cells": Array [],
+                  "neighborQty": Array [],
+                  "settings": Object {
+                    "blur": 1,
+                    "pos": Array [
+                      0,
+                      0,
+                    ],
+                    "scale": 1,
+                  },
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": [Circular],
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_reactInternalInstance": Object {},
+        "canvas": <canvas
+          class="canvas"
+          height="0"
+          width="0"
+        />,
+        "colors": Array [
+          "hsl(180, 100%, 73%)",
+          "hsl(212, 100%, 73%)",
+          "hsl(244, 100%, 73%)",
+          "hsl(276, 100%, 73%)",
+          "hsl(308, 100%, 73%)",
+          "hsl(340, 100%, 73%)",
+          "hsl(12, 100%, 73%)",
+          "hsl(44, 100%, 73%)",
+          "hsl(76, 100%, 73%)",
+        ],
+        "context": Object {},
+        "ctx": CanvasRenderingContext2D {
+          "canvas": <canvas
+            class="canvas"
+            height="0"
+            width="0"
+          />,
+          "createPattern": [Function],
+          "drawImage": [Function],
+        },
+        "props": Object {
+          "cells": Array [],
+          "neighborQty": Array [],
+          "settings": Object {
+            "blur": 1,
+            "pos": Array [
+              0,
+              0,
+            ],
+            "scale": 1,
+          },
+        },
+        "rafID": undefined,
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+        },
+      },
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "cells": Array [],
+        "neighborQty": Array [],
+        "settings": Object {
+          "blur": 1,
+          "pos": Array [
+            0,
+            0,
+          ],
+          "scale": 1,
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": <canvas
+          class="canvas"
+          height="0"
+          width="0"
+        />,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "className": "canvas",
+        },
+        "ref": [Function],
+        "rendered": Array [
+          undefined,
+        ],
+        "type": "canvas",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
