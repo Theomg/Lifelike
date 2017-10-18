@@ -1,4 +1,4 @@
-import Automata from './automata';
+import {Automata} from './automata';
 import {InitSettings} from '../Settings';
 
 describe("Automata", ()=>{
@@ -12,7 +12,10 @@ describe("Automata", ()=>{
       sRule: [2,3],
       seedQty: 0,
       seedArea: [10, 10],
-      maxFPS: 60
+      maxFPS: 60,
+      neighborhood: [[-1, -1], [0, -1], [+1, -1],
+                     [-1,  0],          [+1,  0],
+                     [-1, +1], [0, +1], [+1, +1]]
     }
     const automata = new Automata(cells, neighborQty, settings);
     

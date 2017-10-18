@@ -2,7 +2,7 @@ declare type numberTuple = [number, number];
 
 import {InitSettings} from ".././Settings";
 
-export default class Automata{
+export class Automata{
   settings: InitSettings;
   time: number = null;
   waitTime: number;
@@ -18,7 +18,7 @@ export default class Automata{
   }
 
   //Works ok for smaller simulations, but a nicer hash function with a HashMap+buckets would be better
-  private hash(pair: numberTuple): number{
+  private hashTuple(pair: numberTuple): number{
     return (pair[0] * 2 ** 26) + pair[1];
   }
 
@@ -27,7 +27,7 @@ export default class Automata{
     const cellLen = this.cells.length;
     if(cellLen > 0){
       for(let i = 0;i < cellLen; i++){
-        this.cellMap.set(this.hash(this.cells[i]), i)
+        this.cellMap.set(this.hashTuple(this.cells[i]), i)
       }
     }
     this.seed();
@@ -43,8 +43,9 @@ export default class Automata{
       let newCell: numberTuple;
       let newCellHash: number;
       do{
-        newCell = [~~(Math.random() * width) - width/2 + windowWidth/2, ~~(Math.random() * height) - height/2 + windowHeight/2];
-        newCellHash = this.hash(newCell);
+        newCell = [~~(Math.random() * width - width/2 + windowWidth/2),
+                   ~~(Math.random() * height - height/2 + windowHeight/2)];
+        newCellHash = this.hashTuple(newCell);
       }while(this.cellMap.has(newCellHash));
       const idx = this.cells.length;
       this.cells.push(newCell);
@@ -71,30 +72,43 @@ export default class Automata{
     const removeIdx: number[] = [];
     const addCells: numberTuple[] = [];
     const addNeighborQty: number[] = [];
-    
-    this.cells.forEach((cell, idx)=>{
+    const calculatedAvailable: Set<number> = new Set();
+
+    const cellLen = this.cells.length;
+    for(let i = 0;i < cellLen;i++){
       const neighbors: numberTuple[] = [];
       const available: numberTuple[] = [];
-      this.getNeighbors(cell, this.cells, neighbors, available);
+
+      //Gets cells to be removed
+      this.getNeighbors(this.cells[i], this.cells, neighbors, available);
       const neighborCount = neighbors.length;
-      this.neighborQty[idx] = neighborCount;
+      this.neighborQty[i] = neighborCount;
       if(!this.settings.sRule.includes(neighborCount)){
-        removeIdx.push(idx);
+        removeIdx.push(i);
       }
 
-      available.forEach((pos) => {
+      //Get empty cells to be added, recalculation is avoided by adding them to a set
+      const availableLen = available.length;
+      for(let i = 0;i < availableLen;i++){
+        const pos = available[i];
+        const posHash = this.hashTuple(pos);
+        if(calculatedAvailable.has(posHash)){
+          continue;
+        }
+        calculatedAvailable.add(posHash);
         const potentialNeighborCount = this.getNeighbors(pos, this.cells);
         if(this.settings.bRule.includes(potentialNeighborCount)){
             addCells.push(pos);
             addNeighborQty.push(potentialNeighborCount);
         }
-      });
-    });
+      }
+    }
 
+    //Adds new cells
     while(addCells.length > 0){
       const newCell = addCells.pop();
       const newNeighborQty = addNeighborQty.pop();
-      const newCellHash = this.hash(newCell);
+      const newCellHash = this.hashTuple(newCell);
       if(!this.cellMap.has(newCellHash))
       {
         this.cells.push(newCell);
@@ -106,10 +120,10 @@ export default class Automata{
     //removes cells by swapping with last element, avoiding shifting the remaining elements back
     while(removeIdx.length > 0){
       const idx = removeIdx.pop();
-      this.cellMap.delete(this.hash(this.cells[idx]));
+      this.cellMap.delete(this.hashTuple(this.cells[idx]));
       if(this.cells.length > 1 && idx !== this.cells.length - 1){
         this.cells[idx] = this.cells.pop();
-        this.cellMap.set(this.hash(this.cells[idx]), idx);
+        this.cellMap.set(this.hashTuple(this.cells[idx]), idx);
         this.neighborQty[idx] = this.neighborQty.pop();
       }
       else{
@@ -126,7 +140,10 @@ export default class Automata{
    * @param  {numberTuple[]=[]} retAvailable - Optional array used to return available positions
    * @returns {number} Number of neighbors around position
    */
-  public getNeighbors(pos: numberTuple, cells: numberTuple[], refNeighbors: numberTuple[] = [], refAvailable: numberTuple[] = []): number{
+  public getNeighbors(pos: numberTuple, 
+                      cells: numberTuple[],
+                      refNeighbors: numberTuple[] = [],
+                      refAvailable: numberTuple[] = []): number{
     if(refNeighbors.length > 0){
       refNeighbors = [];
     }
@@ -134,23 +151,19 @@ export default class Automata{
       refAvailable = [];
     }
     const [x, y] = pos;
-    const possibleNeighbors: numberTuple[] = [[x-1, y-1], [x, y-1], [x+1, y-1],
-                                              [x-1, y  ],           [x+1, y  ],
-                                              [x-1, y+1], [x, y+1], [x+1, y+1]];
+    const possibleNeighbors: numberTuple[] = this.settings.neighborhood;
     for(let i = 0;i < possibleNeighbors.length;i++){
-      const cellHash = this.hash(possibleNeighbors[i]);
-      const cellIdx = this.cellMap.get(cellHash);
-      const cell = cells[cellIdx];
-      if(cell === undefined){
-        refAvailable.push(possibleNeighbors[i]);
+      const neighbor: numberTuple = [x + possibleNeighbors[i][0],
+                                     y + possibleNeighbors[i][1]];
+      const cellHash = this.hashTuple(neighbor);
+      const hasCell = this.cellMap.has(cellHash);
+      if(!hasCell){
+        refAvailable.push(neighbor);
       }
       else{
-        refNeighbors.push(possibleNeighbors[i]);
+        refNeighbors.push(neighbor);
       }
     }
     return refNeighbors.length;
   }
 }
-
-
-

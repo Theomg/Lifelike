@@ -4,6 +4,7 @@ export interface InitSettings {
   seedQty: number,
   seedArea: number[],
   maxFPS: number,
+  neighborhood: [number, number][]
 }
 
 export interface RenderSettings {

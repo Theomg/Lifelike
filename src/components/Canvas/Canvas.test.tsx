@@ -15,12 +15,12 @@ describe('Canvas', ()=>{
   }
 
   it('should render a canvas element', ()=>{
-    const canvas = mount(<Canvas cells={[]} neighborQty={[]} settings={drawSettings}/>);
+    const canvas = mount(<Canvas cells={[]} neighborQty={[]} settings={drawSettings} handleWheel={()=>{}}/>);
     expect(canvas.childAt(0).is('canvas')).toBe(true);
   });
 
   it('should render correctly', ()=>{
-    const canvas = mount(<Canvas cells={[]} neighborQty={[]} settings={drawSettings}/>);
+    const canvas = mount(<Canvas cells={[]} neighborQty={[]} settings={drawSettings} handleWheel={()=>{}}/>);
     expect(canvas).toMatchSnapshot();
   });
 });

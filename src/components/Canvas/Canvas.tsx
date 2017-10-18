@@ -6,7 +6,8 @@ import {RenderSettings} from "../../Settings";
 export interface CanvasProps {
                               cells: [number, number][],
                               neighborQty: number[],
-                              settings: RenderSettings
+                              settings: RenderSettings,
+                              handleWheel: any,
                              }
 interface CanvasState {}
 
@@ -22,7 +23,7 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
     const maxAngle = 360/8;
     const initialHue = ~~(Math.random() * 360);
     const angle = ~~(Math.random() * (maxAngle - minAngle)) + minAngle;
-    const minLight = 60;
+    const minLight = 65;
     const maxLight = 87;
     for(let i = 0;i < 9;i++){
       const hue = (initialHue + angle * i) % 360;
@@ -42,10 +43,6 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
 
   public componentWillUnmount(){
     this.stopLoop();
-  }
-
-  public render(){
-    return <canvas ref={c => this.canvas = c} className={css.canvas}></canvas>;
   }
 
   private startLoop(){
@@ -77,5 +74,9 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
     }
     this.ctx.setTransform(1,0,0,1,0,0);
     this.rafID = requestAnimationFrame((time) => this.draw(time));
+  }
+
+  public render(){
+    return <canvas ref={c => this.canvas = c} className={css.canvas} onWheel={this.props.handleWheel}></canvas>;
   }
 }
