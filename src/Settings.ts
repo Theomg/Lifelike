@@ -9,6 +9,6 @@ export interface InitSettings {
 
 export interface RenderSettings {
   scale: number,
-  pos: number[],
+  pos: [number,number],
   blur: number
 }

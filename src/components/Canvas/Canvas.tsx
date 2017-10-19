@@ -8,10 +8,12 @@ export interface CanvasProps {
                               neighborQty: number[],
                               settings: RenderSettings,
                               handleWheel: any,
+                              handleClickStart: any,
+                              handleClickEnd: any,
+                              handleClickMove: any
                              }
-interface CanvasState {}
 
-export class Canvas extends React.Component<CanvasProps, CanvasState>{
+export class Canvas extends React.Component<CanvasProps, {}>{
   private ctx : CanvasRenderingContext2D;
   private canvas : HTMLCanvasElement;
   private rafID : number;
@@ -30,11 +32,17 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
       const lightness = ~~(Math.random() * (maxLight - minLight)) + minLight;
       this.colors[i] = `hsl(${hue}, 100%, ${lightness}%)`;
     }
+    this.updateSize = this.updateSize.bind(this);
+  }
+
+  private updateSize(){
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
   }
 
   public componentDidMount(){
-    this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight;
+    window.addEventListener("resize", this.updateSize);
+    this.updateSize();
     this.ctx = this.canvas.getContext('2d');
     this.ctx.fillStyle = '#000';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -42,6 +50,7 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
   }
 
   public componentWillUnmount(){
+    window.removeEventListener("resize", this.updateSize);
     this.stopLoop();
   }
 
@@ -55,28 +64,50 @@ export class Canvas extends React.Component<CanvasProps, CanvasState>{
   }
 
   private draw(time: number){
+    //Apply blur/clean rect
     const blur = this.props.settings.blur;
     const blurAlpha = (1 - blur) + blur * .1;
     this.ctx.fillStyle = `rgba(0,0,0,${blurAlpha})`;
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    //Apply scale matrix
     const scale = this.props.settings.scale;
     this.ctx.setTransform(scale, 0, 0, scale, this.canvas.width/2, this.canvas.height/2);
+
+    //Calculate camera bounds from position and scale
+    const [camX, camY] = this.props.settings.pos;
+    const minX = (camX + this.canvas.width/2) - (this.canvas.width/(2 * scale));
+    const minY = (camY + this.canvas.height/2) - (this.canvas.height/(2 * scale));
+    const maxX = camX + this.canvas.width/scale;
+    const maxY = camY + this.canvas.height/scale;
+
+    //Draw cells in bounds
     const cellsLen = this.props.cells.length;
-    const [camx, camy] = this.props.settings.pos;
     for(let i = 0;i < cellsLen;i++){
       const [x, y] = this.props.cells[i];
-      if(x < camx || x > camx + this.canvas.width ||
-         y < camy || y > camy + this.canvas.height){
+      if(scale <= 1 &&
+         (x < minX || x > maxX ||
+         y < minY || y > maxY)){
           continue;
       }
       this.ctx.fillStyle = this.colors[this.props.neighborQty[i]];
-      this.ctx.fillRect(x - camx - this.canvas.width/2, y - camy - this.canvas.height/2, 1, 1);
-    }
+      this.ctx.fillRect(x - camX - this.canvas.width/2, y - camY - this.canvas.height/2, 1, 1);
+    } 
+
+    //Reset scale matrix
     this.ctx.setTransform(1,0,0,1,0,0);
     this.rafID = requestAnimationFrame((time) => this.draw(time));
   }
 
   public render(){
-    return <canvas ref={c => this.canvas = c} className={css.canvas} onWheel={this.props.handleWheel}></canvas>;
+    return <canvas ref={c => this.canvas = c} className={css.canvas} 
+                   onWheel={this.props.handleWheel} 
+                   onMouseDown={this.props.handleClickStart}
+                   onTouchStart={this.props.handleClickStart}
+                   onMouseUp={this.props.handleClickEnd}
+                   onTouchEnd={this.props.handleClickEnd}
+                   onMouseMove={this.props.handleClickMove}
+                   onTouchMove={this.props.handleClickMove}
+                   ></canvas>;
   }
 }
