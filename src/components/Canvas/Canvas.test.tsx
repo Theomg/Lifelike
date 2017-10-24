@@ -14,10 +14,13 @@ describe('Canvas', ()=>{
     blur: 1
   }
 
-  it('should render a canvas element', ()=>{
+  it('should render a canvas element with passed dimensions', ()=>{
     const props: CanvasProps = {
+      height: 1920,
+      width: 1080,
       cells: [],
       neighborQty: [],
+      potentialCells: [],
       settings: drawSettings,
       handleWheel: () => {},
       handleClickEnd: () => {},
@@ -25,6 +28,8 @@ describe('Canvas', ()=>{
       handleClickStart: () => {}
     }
     const canvas = mount(<Canvas {...props}/>);
-    expect(canvas.childAt(0).is('canvas')).toBe(true);
+    expect(canvas.getDOMNode().tagName.toLowerCase()).toBe('canvas');
+    expect(canvas.getDOMNode().getAttribute('width')).toBe(props.width.toString());
+    expect(canvas.getDOMNode().getAttribute('height')).toBe(props.height.toString());
   });
 });

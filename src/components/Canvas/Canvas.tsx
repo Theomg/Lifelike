@@ -4,8 +4,11 @@ import * as css from "./Canvas.css";
 import {RenderSettings} from "../../Settings";
 
 export interface CanvasProps {
+                              width: number,
+                              height: number,
                               cells: [number, number][],
                               neighborQty: number[],
+                              potentialCells: [number, number][],
                               settings: RenderSettings,
                               handleWheel: any,
                               handleClickStart: any,
@@ -32,25 +35,23 @@ export class Canvas extends React.Component<CanvasProps, {}>{
       const lightness = ~~(Math.random() * (maxLight - minLight)) + minLight;
       this.colors[i] = `hsl(${hue}, 100%, ${lightness}%)`;
     }
-    this.updateSize = this.updateSize.bind(this);
-  }
-
-  private updateSize(){
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
   }
 
   public componentDidMount(){
-    window.addEventListener("resize", this.updateSize);
-    this.updateSize();
+    this.canvas.width = this.props.width;
+    this.canvas.height = this.props.height;
     this.ctx = this.canvas.getContext('2d');
     this.ctx.fillStyle = '#000';
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillRect(0, 0, this.props.width, this.props.height);
     this.startLoop();
   }
 
+  public componentDidUpdate(){
+    this.canvas.width = this.props.width;
+    this.canvas.height = this.props.height;
+  }
+
   public componentWillUnmount(){
-    window.removeEventListener("resize", this.updateSize);
     this.stopLoop();
   }
 
@@ -68,18 +69,19 @@ export class Canvas extends React.Component<CanvasProps, {}>{
     const blur = this.props.settings.blur;
     const blurAlpha = (1 - blur) + blur * .1;
     this.ctx.fillStyle = `rgba(0,0,0,${blurAlpha})`;
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillRect(0, 0, this.props.width, this.props.height);
 
     //Apply scale matrix
     const scale = this.props.settings.scale;
-    this.ctx.setTransform(scale, 0, 0, scale, this.canvas.width/2, this.canvas.height/2);
+    this.ctx.setTransform(scale, 0, 0, scale, this.props.width/2, this.props.height/2);
 
     //Calculate camera bounds from position and scale
-    const [camX, camY] = this.props.settings.pos;
-    const minX = (camX + this.canvas.width/2) - (this.canvas.width/(2 * scale));
-    const minY = (camY + this.canvas.height/2) - (this.canvas.height/(2 * scale));
-    const maxX = camX + this.canvas.width/scale;
-    const maxY = camY + this.canvas.height/scale;
+    let [camX, camY] = this.props.settings.pos;
+    [camX, camY] = [Math.round(camX), Math.round(camY)];
+    const minX = (camX + this.props.width/2) - (this.props.width/(2 * scale));
+    const minY = (camY + this.props.height/2) - (this.props.height/(2 * scale));
+    const maxX = camX + this.props.width/scale;
+    const maxY = camY + this.props.height/scale;
 
     //Draw cells in bounds
     const cellsLen = this.props.cells.length;
@@ -91,11 +93,24 @@ export class Canvas extends React.Component<CanvasProps, {}>{
           continue;
       }
       this.ctx.fillStyle = this.colors[this.props.neighborQty[i]];
-      this.ctx.fillRect(x - camX - this.canvas.width/2, y - camY - this.canvas.height/2, 1, 1);
-    } 
+      this.ctx.fillRect(x - camX - this.props.width/2,
+                        y - camY - this.props.height/2,
+                        1, 1);
+    }
+
+    //Draw input hover
+    const inputLen = this.props.potentialCells.length;
+    for(let i = 0;i < inputLen;i++){
+      const [x, y] = this.props.potentialCells[i];
+      this.ctx.fillStyle = 'rgb(255,255,255)';
+      this.ctx.fillRect(x - camX - this.props.width/2,
+                        y - camY - this.props.height/2,
+                        1, 1);
+    }
 
     //Reset scale matrix
     this.ctx.setTransform(1,0,0,1,0,0);
+
     this.rafID = requestAnimationFrame((time) => this.draw(time));
   }
 

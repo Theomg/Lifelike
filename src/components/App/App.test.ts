@@ -13,6 +13,7 @@ describe('App', ()=>{
       expect(neighborhood).toEqual(expect.arrayContaining(expected));
       expect(neighborhood).toHaveLength(expected.length);
     });
+
     it('should be able to generate a von neumann neighborhood matrix', ()=>{
       const expected = [
                  [0, -1], 
@@ -23,6 +24,7 @@ describe('App', ()=>{
       expect(neighborhood).toEqual(expect.arrayContaining(expected));
       expect(neighborhood).toHaveLength(expected.length);
     });
+    
     it('should be able to generate a neighborhood matrix including itself', ()=>{
       const expected = [
                  [0, -1], 
@@ -33,6 +35,7 @@ describe('App', ()=>{
       expect(neighborhood).toEqual(expect.arrayContaining(expected));
       expect(neighborhood).toHaveLength(expected.length);
     });
+    
     it('should be able to generate a neighborhood matrix with radius 2', ()=>{
       const expected = [
         [-2,-2], [-1,-2], [0, -2], [1, -2], [2, -2],

@@ -80,7 +80,7 @@ export class Automata{
       const available: numberTuple[] = [];
 
       //Gets cells to be removed
-      this.getNeighbors(this.cells[i], this.cells, neighbors, available);
+      this.getNeighbors(this.cells[i], neighbors, available);
       const neighborCount = neighbors.length;
       this.neighborQty[i] = neighborCount;
       if(!this.settings.sRule.includes(neighborCount)){
@@ -96,7 +96,7 @@ export class Automata{
           continue;
         }
         calculatedAvailable.add(posHash);
-        const potentialNeighborCount = this.getNeighbors(pos, this.cells);
+        const potentialNeighborCount = this.getNeighbors(pos);
         if(this.settings.bRule.includes(potentialNeighborCount)){
             addCells.push(pos);
             addNeighborQty.push(potentialNeighborCount);
@@ -120,28 +120,59 @@ export class Automata{
     //removes cells by swapping with last element, avoiding shifting the remaining elements back
     while(removeIdx.length > 0){
       const idx = removeIdx.pop();
-      this.cellMap.delete(this.hashTuple(this.cells[idx]));
-      if(this.cells.length > 1 && idx !== this.cells.length - 1){
-        this.cells[idx] = this.cells.pop();
-        this.cellMap.set(this.hashTuple(this.cells[idx]), idx);
-        this.neighborQty[idx] = this.neighborQty.pop();
+      this.removeCell(this.cells[idx]);
+    }
+  }
+
+  public toggleCells(cells: numberTuple[]){
+    const cellsHashes = cells.map(cell => this.hashTuple(cell));
+    //Remove all cells
+    if(this.cellMap.has(cellsHashes[0])){
+      this.removeCell(cells[0]);
+      for(let i = 1;i < cells.length;i++){
+        if(this.cellMap.has(cellsHashes[i])){
+          this.removeCell(cells[i]);
+        }
       }
-      else{
-        this.cells.pop();
-        this.neighborQty.pop();
+    }
+    //Add all cells
+    else{
+      for(let i = 0;i < cells.length;i++){
+        if(i !== 0 && this.cellMap.has(cellsHashes[i])) continue;
+
+        const idx = this.cells.length;
+        this.cells.push(cells[i]);
+        this.cellMap.set(cellsHashes[i], idx);
+        this.neighborQty[idx] = this.getNeighbors(cells[i]);
       }
+    }
+  }
+
+  //Removes cell by swapping with last cell, avoiding the array having to push back
+  private removeCell(cell: numberTuple){
+    const cellHash = this.hashTuple(cell);
+    const idx = this.cellMap.get(cellHash);
+    this.cellMap.delete(cellHash);
+    if(this.cells.length > 1 && idx !== this.cells.length - 1){
+      const swapCell = this.cells.pop();
+      const swapCellHash = this.hashTuple(swapCell);
+      this.cells[idx] = swapCell;
+      this.cellMap.set(swapCellHash, idx);
+      this.neighborQty[idx] = this.neighborQty.pop();
+    }
+    else{
+      this.cells.pop();
+      this.neighborQty.pop();
     }
   }
   
   /**
    * @param  {numberTuple} pos - Position of cell
-   * @param  {numberTuple[]} cells
    * @param  {numberTuple[]=[]} retNeighbors - Optional array used to return neighbors positions
    * @param  {numberTuple[]=[]} retAvailable - Optional array used to return available positions
    * @returns {number} Number of neighbors around position
    */
   public getNeighbors(pos: numberTuple, 
-                      cells: numberTuple[],
                       refNeighbors: numberTuple[] = [],
                       refAvailable: numberTuple[] = []): number{
     if(refNeighbors.length > 0){

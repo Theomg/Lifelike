@@ -20,12 +20,12 @@ describe("Automata", ()=>{
     const automata = new Automata(cells, neighborQty, settings);
     
     it("should return the number of current neighbors", () => {
-      expect(automata.getNeighbors([1,1], cells)).toBe(5);
+      expect(automata.getNeighbors([1,1])).toBe(5);
     });
 
     it("should modify the neighbors array", () => {
       const neighbors: [number, number][] = [];
-      automata.getNeighbors([1,1], cells, neighbors);
+      automata.getNeighbors([1,1], neighbors);
       const expectedNeighbors = [[0,0], [2,0], [0,2], [1,2], [2,2]];
 
       expect(neighbors).toEqual(expect.arrayContaining(expectedNeighbors));
@@ -34,7 +34,7 @@ describe("Automata", ()=>{
 
     it("should modify the available neighbors array", () => {   
       const availableNeighbors: [number, number][] = [];
-      automata.getNeighbors([1,1], cells, [], availableNeighbors);
+      automata.getNeighbors([1,1], [], availableNeighbors);
       const expectedAvailable = [[1,0], [0,1], [2,1]];
 
       expect(availableNeighbors).toEqual(expect.arrayContaining(expectedAvailable));
