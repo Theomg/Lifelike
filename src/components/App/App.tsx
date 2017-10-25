@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {Canvas, CanvasProps} from '../Canvas';
+import {Sidebar} from '../Sidebar';
 import {Automata} from '../../automata'
 import {InitSettings, RenderSettings} from "../../Settings";
 
@@ -10,7 +11,9 @@ export interface AppState{
   cells: [number, number][],
   neighborQty: number[],
   width: number,
-  height: number
+  height: number,
+  brush: [number, number][],
+  potentialCells: [number, number][],
 }
 
 export enum NeighborhoodType {
@@ -31,7 +34,6 @@ export class App extends React.Component<{}, AppState>{
 
   private clickPos: [number, number][] = [[null, null], [null, null]];
   private posOnClick: [number, number]; 
-  private potentialCells: [number, number][] = [];
 
   private automata: Automata;
 
@@ -47,7 +49,7 @@ export class App extends React.Component<{}, AppState>{
       initSettings: {
         bRule: [3],
         sRule: [2,3],
-        seedQty: 10000,
+        seedQty: 0,
         seedArea: [200, 300],
         maxFPS: 60,
         neighborhood: this.generateNeighborhood(NeighborhoodType.Moore, 1, false)
@@ -55,7 +57,9 @@ export class App extends React.Component<{}, AppState>{
       cells: [],
       neighborQty: [],
       width: 0,
-      height: 0
+      height: 0,
+      brush: [[0,0]],
+      potentialCells: [],
     }
 
     this.handleWheel = this.handleWheel.bind(this);
@@ -73,18 +77,12 @@ export class App extends React.Component<{}, AppState>{
       radius = 1;
     }
     if(type === NeighborhoodType.vonNeumann){
-      for(let x = -radius;x <= radius;x++){
+      //Bitwise nots remove negative zero
+      for(let x = ~~(-radius);x <= radius;x++ + 0){
         const xRadius = radius - Math.abs(x);
-        for(let y = -xRadius;y <= xRadius;y++){
-          if(!addSelf && x === 0 && y === 0){
-            continue;
-          }
-          if(x === 0){
-            x = Math.abs(x);
-          }
-          if(y === 0){
-            y = Math.abs(y);
-          }
+        for(let y = ~~(-xRadius);y <= xRadius;y++ + 0){
+          if(!addSelf && x === 0 && y === 0) continue;
+          
           neighborhood.push([x, y]);
         }
       }
@@ -92,9 +90,8 @@ export class App extends React.Component<{}, AppState>{
     else if(type === NeighborhoodType.Moore){
       for(let x = -radius;x <= radius;x++){
         for(let y = -radius;y <= radius;y++){
-          if(!addSelf && x === 0 && y === 0){
-            continue;
-          }
+          if(!addSelf && x === 0 && y === 0) continue;
+
           neighborhood.push([x, y]);
         }
       }
@@ -122,7 +119,11 @@ export class App extends React.Component<{}, AppState>{
     if(this.inputState === InputState.ClickStart){
       const clicks = this.clickToPositions(e);
       const cell = this.positionToCell(clicks[0]);
-      this.automata.toggleCells([cell]);
+      const brush = this.state.brush.map(pos => {
+        return [pos[0] + cell[0],
+                pos[1] + cell[1]] as [number, number];
+      });
+      this.automata.toggleCells(brush);
     }
     this.inputState = InputState.Idle;
     this.clickPos.forEach(pos => {
@@ -133,8 +134,14 @@ export class App extends React.Component<{}, AppState>{
   //TODO: Pinch zoom
   private handleClickMove(e: MouseEvent|TouchEvent){
     const clicks = this.clickToPositions(e);
-    this.potentialCells[0] = this.positionToCell(clicks[0]);
-
+    const cell: [number, number] = this.positionToCell(clicks[0]);
+    const brush = this.state.brush.map(pos => {
+      return [pos[0] + cell[0],
+              pos[1] + cell[1]] as [number, number];
+    });
+    this.setState({
+      potentialCells: brush
+    });
     //Differentiate click from drag
     if(this.inputState === InputState.ClickStart){
       const diff = [this.clickPos[0][0] - clicks[0][0],
@@ -151,6 +158,9 @@ export class App extends React.Component<{}, AppState>{
       const scale = renderSettings.scale;
       renderSettings.pos = [this.posOnClick[0] + diff[0] / scale,
                             this.posOnClick[1] + diff[1] / scale];
+      this.setState({
+        renderSettings
+      });
     }
   }
 
@@ -201,17 +211,24 @@ export class App extends React.Component<{}, AppState>{
   }
 
   public render(){
-    return <Canvas 
-              width={this.state.width}
-              height={this.state.height}
-              cells={this.state.cells} 
-              neighborQty={this.state.neighborQty} 
-              potentialCells={this.potentialCells}
-              settings={this.state.renderSettings} 
-              handleWheel={this.handleWheel}
-              handleClickStart={this.handleClickStart}
-              handleClickEnd={this.handleClickEnd}
-              handleClickMove={this.handleClickMove}
-            />;
+    const canvasProps: CanvasProps = {
+      width: this.state.width,
+      height: this.state.height,
+      cells: this.state.cells, 
+      neighborQty: this.state.neighborQty, 
+      potentialCells: this.state.potentialCells,
+      settings: this.state.renderSettings, 
+      handleWheel: this.handleWheel,
+      handleClickStart: this.handleClickStart,
+      handleClickEnd: this.handleClickEnd,
+      handleClickMove: this.handleClickMove,
+    };
+
+    return(
+      <div>
+        <Sidebar />
+        <Canvas {...canvasProps}/>
+      </div>
+    );
   }
 }

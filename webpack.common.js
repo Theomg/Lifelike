@@ -57,12 +57,19 @@ module.exports = {
         loader: 'source-map-loader'
       },
       {
-        test: /.css$/,
+        test: /\.css$/,
         use:[
           {loader: 'style-loader'},
           {loader: 'typings-for-css-modules-loader?modules&namedExport&camelCase&localIdentName[name]__[local]--[hash:base64:5]'},
           {loader: 'postcss-loader'}
         ]
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options:{
+          limit: 10000
+        }
       }
     ]
   }

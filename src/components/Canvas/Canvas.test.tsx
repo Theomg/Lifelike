@@ -28,8 +28,9 @@ describe('Canvas', ()=>{
       handleClickStart: () => {}
     }
     const canvas = mount(<Canvas {...props}/>);
-    expect(canvas.getDOMNode().tagName.toLowerCase()).toBe('canvas');
-    expect(canvas.getDOMNode().getAttribute('width')).toBe(props.width.toString());
-    expect(canvas.getDOMNode().getAttribute('height')).toBe(props.height.toString());
+    const canvasNode = canvas.getDOMNode();
+    expect(canvasNode.tagName.toLowerCase()).toBe('canvas');
+    expect(canvasNode.getAttribute('width')).toBe(props.width.toString());
+    expect(canvasNode.getAttribute('height')).toBe(props.height.toString());
   });
 });

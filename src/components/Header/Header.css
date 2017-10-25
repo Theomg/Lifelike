@@ -1,0 +1,29 @@
+.header{
+  display: flex;
+  flex-direction: column;
+}
+
+.heading{
+  font-family: 'Muli', sans-serif;
+  display: flex;
+}
+
+.headingLogo{
+  width: .75em;
+  height: 1em;
+  align-self: center;
+}
+
+.subtitle{
+  font-family: 'Lora', serif;
+  display: flex;
+}
+
+.subtitleLogo{
+  height: 1em;
+  align-self: center;
+}
+
+.link{
+  text-decoration: none;
+}
