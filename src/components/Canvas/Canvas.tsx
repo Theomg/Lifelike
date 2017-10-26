@@ -41,9 +41,11 @@ export class Canvas extends React.Component<CanvasProps, {}>{
     this.canvas.width = this.props.width;
     this.canvas.height = this.props.height;
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.fillStyle = '#000';
-    this.ctx.fillRect(0, 0, this.props.width, this.props.height);
-    this.startLoop();
+    if(this.ctx !== null){
+      this.ctx.fillStyle = '#000';
+      this.ctx.fillRect(0, 0, this.props.width, this.props.height);
+      this.startLoop();
+    }
   }
 
   public componentDidUpdate(){

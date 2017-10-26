@@ -63,6 +63,7 @@
       "json"
     ],
     "moduleNameMapper": {
+      "\\.svg$": "<rootDir>/jest.filemock.js",      
       "\\.css$": "identity-obj-proxy"
     },
     "setupFiles": [
