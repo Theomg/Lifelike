@@ -26,13 +26,20 @@ export class Sidebar extends React.Component<{}, SidebarState>{
   }
 
   public render(){
-    const sidebarClass = `${css.sidebar} ${!this.state.isOpen ? css.sidebarClosed : ''}`;
+    const sidebarClass = `${css.sidebar} ${this.state.isOpen ? css.sidebarOpen : ''}`;
+    const hamburgerClass = `${css.hamburger} ${this.state.isOpen ? css.hamburgerOpen : ''}`;
     return(
       <aside className={sidebarClass}>
         <section className={css.sidebarContent}>
           <Header />
         </section>
-        <div onClick={this.toggleOpen} className={css.toggleSidebar}></div>
+        <div onClick={this.toggleOpen} className={css.toggleSidebar}>
+          <div className={hamburgerClass}>
+            <div className={css.hamburgerLine}/>
+            <div className={css.hamburgerLine}/>
+            <div className={css.hamburgerLine}/>
+          </div>
+        </div>
       </aside>
     );
   }

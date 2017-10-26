@@ -63,9 +63,7 @@ export class Automata{
       this.time = timestamp - (dt % this.waitTime);
       this.update();
     }
-    if(this.cells.length > 0) {
-      requestAnimationFrame(t => this.loop(t));  
-    }
+    requestAnimationFrame(t => this.loop(t));  
   }
   
   private update(): void{

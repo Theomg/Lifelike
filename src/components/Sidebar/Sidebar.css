@@ -1,22 +1,35 @@
 .toggleSidebar{
-  height: 100%;
-  width: 5%;
-  background-color: rgb(128, 128, 128);
   display: flex;
+  width: 40px;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  background-color: rgb(128, 128, 128);
+  cursor: pointer;
 }
 
-.toggleSidebar:before{
-  content: '<';
-  font-family: 'Lora', serif;
-  display: block;
-  transform: rotate(0);
-  transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+.hamburger{
+  display:flex;
+  width: 25px;
+  height: 25px;
+  padding-top: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.sidebarClosed > .toggleSidebar:before{
-  transform: rotate(180deg);
+.hamburgerLine{
+  width: 100%;
+  height: 5px;
+  background-color: black;
+  transition: transform 0.3s linear;
+  transform-origin: left;
+}
+
+.hamburgerOpen .hamburgerLine:first-child{
+  transform: translate3d(10px, 1px, 0) rotate(135deg) scaleX(0.6);  
+}
+
+.hamburgerOpen .hamburgerLine:last-child{
+  transform: translate3d(10px, -1px, 0)  rotate(-135deg) scaleX(0.6);  
 }
 
 .sidebar{
@@ -25,15 +38,15 @@
   height: 100vh;
   position: absolute;
   display: flex;
-  transform: translateX(0);
+  transform: translateX(-360px);
   transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
   background-color: #fff;
 }
 
-.sidebarClosed{
-  transform: translateX(-95%);
+.sidebarOpen{
+  transform: translateX(0);
 }
 
 .sidebarContent{
-  width: 95%;
+  width: 360px;
 }
