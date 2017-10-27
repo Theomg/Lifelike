@@ -4,6 +4,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const PWAManifestPlugin = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
+const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -26,7 +27,6 @@ module.exports = {
     }),
     new PWAManifestPlugin({
       name: 'Lifelike',
-      short_name: 'Lifelike',
       description: 'A Life-like Cellular Automaton',
       background_color: '#000000',
       theme_color: '#000000',
@@ -36,6 +36,12 @@ module.exports = {
           src: path.resolve(__dirname, 'src/assets/icons/icon.png'),
           sizes: [96, 128, 192, 256, 384, 512, 1024]
         }
+      ]
+    }),
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: "Lora" },
+        { family: "Muli"}
       ]
     }),
     new webpack.WatchIgnorePlugin([

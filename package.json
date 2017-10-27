@@ -31,6 +31,7 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "file-loader": "^1.1.5",
+    "google-fonts-webpack-plugin": "^0.4.3",
     "html-webpack-plugin": "^2.30.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.2.1",
@@ -63,7 +64,7 @@
       "json"
     ],
     "moduleNameMapper": {
-      "\\.svg$": "<rootDir>/jest.filemock.js",      
+      "\\.svg$": "<rootDir>/jest.filemock.js",
       "\\.css$": "identity-obj-proxy"
     },
     "setupFiles": [
