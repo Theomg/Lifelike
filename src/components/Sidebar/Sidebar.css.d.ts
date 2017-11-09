@@ -1,3 +1,4 @@
+export const sidebarMenu: string;
 export const toggleSidebar: string;
 export const hamburger: string;
 export const hamburgerLine: string;

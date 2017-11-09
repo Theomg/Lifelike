@@ -20,6 +20,7 @@ describe('Canvas', ()=>{
       width: 1080,
       cells: [],
       neighborQty: [],
+      neighborColors: [],
       potentialCells: [],
       settings: drawSettings,
       handleWheel: () => {},

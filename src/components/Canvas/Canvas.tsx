@@ -8,6 +8,7 @@ export interface CanvasProps {
                               height: number,
                               cells: [number, number][],
                               neighborQty: number[],
+                              neighborColors: string[],
                               potentialCells: [number, number][],
                               settings: RenderSettings,
                               handleWheel: any,
@@ -20,30 +21,12 @@ export class Canvas extends React.Component<CanvasProps, {}>{
   private ctx : CanvasRenderingContext2D;
   private canvas : HTMLCanvasElement;
   private rafID : number;
-  private colors : string[] = new Array(8);
-
-  constructor(props : CanvasProps){
-    super();
-    const minAngle = 20;
-    const maxAngle = 360/8;
-    const initialHue = ~~(Math.random() * 360);
-    const angle = ~~(Math.random() * (maxAngle - minAngle)) + minAngle;
-    const minLight = 65;
-    const maxLight = 87;
-    for(let i = 0;i < 9;i++){
-      const hue = (initialHue + angle * i) % 360;
-      const lightness = ~~(Math.random() * (maxLight - minLight)) + minLight;
-      this.colors[i] = `hsl(${hue}, 100%, ${lightness}%)`;
-    }
-  }
 
   public componentDidMount(){
     this.canvas.width = this.props.width;
     this.canvas.height = this.props.height;
     this.ctx = this.canvas.getContext('2d');
     if(this.ctx !== null){
-      this.ctx.fillStyle = '#000';
-      this.ctx.fillRect(0, 0, this.props.width, this.props.height);
       this.startLoop();
     }
   }
@@ -67,10 +50,10 @@ export class Canvas extends React.Component<CanvasProps, {}>{
   }
 
   private draw(time: number){
-    //Apply blur/clean rect
+    //Apply blur/clear rect
     const blur = this.props.settings.blur;
     const blurAlpha = (1 - blur) + blur * .1;
-    this.ctx.fillStyle = `rgba(0,0,0,${blurAlpha})`;
+    this.ctx.fillStyle = `rgba(50, 50, 80,${blurAlpha})`;
     this.ctx.fillRect(0, 0, this.props.width, this.props.height);
 
     //Apply scale matrix
@@ -94,7 +77,7 @@ export class Canvas extends React.Component<CanvasProps, {}>{
          y < minY || y > maxY)){
           continue;
       }
-      this.ctx.fillStyle = this.colors[this.props.neighborQty[i]];
+      this.ctx.fillStyle = this.props.neighborColors[this.props.neighborQty[i]];
       this.ctx.fillRect(x - camX - this.props.width/2,
                         y - camY - this.props.height/2,
                         1, 1);

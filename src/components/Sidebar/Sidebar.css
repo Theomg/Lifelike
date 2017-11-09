@@ -1,10 +1,22 @@
-.toggleSidebar{
+.sidebarMenu{
   display: flex;
+  flex-direction: column;
   width: 40px;
   height: 100%;
+  flex-shrink: 0;
+}
+
+.toggleSidebar{
+  display: flex;
+  flex-grow: 1;
   justify-content: center;
-  background-color: rgb(128, 128, 128);
+  background-color: hsl(34, 100%, 71%);
+  transition: background-color 0.2s;
   cursor: pointer;
+}
+
+.toggleSidebar:hover{
+  background-color: hsl(34, 100%, 65%);
 }
 
 .hamburger{
@@ -19,8 +31,8 @@
 .hamburgerLine{
   width: 100%;
   height: 5px;
-  background-color: black;
-  transition: transform 0.3s linear;
+  background-color: rgb(246, 246, 250);
+  transition: transform 0.4s linear;
   transform-origin: left;
 }
 
@@ -40,7 +52,7 @@
   display: flex;
   transform: translateX(-360px);
   transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
-  background-color: #fff;
+  background-color: rgb(230, 230, 240);
 }
 
 .sidebarOpen{
@@ -49,4 +61,9 @@
 
 .sidebarContent{
   width: 360px;
+  flex-shrink: 0;
+}
+
+.sidebarOpen > .sidebarContent{
+  flex-shrink: 1;
 }

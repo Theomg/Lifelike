@@ -54,7 +54,7 @@ export class Automata{
     }
   }
 
-  public loop(timestamp: number = 0): void{
+  public loop(timestamp = 0): void{
     if(this.time === null){
       this.time = timestamp;
     }

@@ -2,7 +2,7 @@ export interface InitSettings {
   bRule: number[],
   sRule: number[],
   seedQty: number,
-  seedArea: number[],
+  seedArea: [number, number],
   maxFPS: number,
   neighborhood: [number, number][]
 }

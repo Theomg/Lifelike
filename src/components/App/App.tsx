@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Canvas, CanvasProps} from '../Canvas';
-import {Sidebar} from '../Sidebar';
+import {Sidebar, SidebarProps} from '../Sidebar';
 import {Automata} from '../../automata'
 import {InitSettings, RenderSettings} from "../../Settings";
 
@@ -10,10 +10,14 @@ export interface AppState{
   initSettings: InitSettings,
   cells: [number, number][],
   neighborQty: number[],
+  neighborColors: string[],
   width: number,
   height: number,
   brush: [number, number][],
   potentialCells: [number, number][],
+  neighborhoodType: NeighborhoodType,
+  neighborhoodSize: number,
+  neighborhoodAddSelf: boolean
 }
 
 export enum NeighborhoodType {
@@ -37,8 +41,17 @@ export class App extends React.Component<{}, AppState>{
 
   private automata: Automata;
 
+  private initialNeighborhoodSize = 1;
+  private initialNeighborhoodType = NeighborhoodType.Moore;
+  private initialNeighborhoodAddSelf = false;
+
   constructor(){
     super();
+
+    const neighborhood = this.generateNeighborhood(this.initialNeighborhoodType,
+                                                   this.initialNeighborhoodSize, 
+                                                   this.initialNeighborhoodAddSelf);
+    const neighborColors = this.generateNeighborColors(neighborhood.length);
 
     this.state = {
       renderSettings: {
@@ -49,18 +62,22 @@ export class App extends React.Component<{}, AppState>{
       initSettings: {
         bRule: [3],
         sRule: [2,3],
-        seedQty: 0,
+        seedQty: 5000,
         seedArea: [200, 300],
         maxFPS: 60,
-        neighborhood: this.generateNeighborhood(NeighborhoodType.Moore, 1, false)
+        neighborhood: neighborhood
       },
       cells: [],
       neighborQty: [],
+      neighborColors: neighborColors,
       width: 0,
       height: 0,
       brush: [[0,0]],
       potentialCells: [],
-    }
+      neighborhoodType: this.initialNeighborhoodType,
+      neighborhoodSize: this.initialNeighborhoodSize,
+      neighborhoodAddSelf: this.initialNeighborhoodAddSelf
+    };
 
     this.handleWheel = this.handleWheel.bind(this);
     this.handleClickStart = this.handleClickStart.bind(this);
@@ -97,6 +114,25 @@ export class App extends React.Component<{}, AppState>{
       }
     }
     return neighborhood;
+  }
+
+  public generateNeighborColors(neighborQty: number): string[] {
+    const colors: string[] = [];
+
+    const minAngle = ~~Math.max(0, 360/neighborQty - 25);
+    const maxAngle = ~~(360/neighborQty);
+    const initialHue = ~~(Math.random() * 360);
+    const angle = ~~(Math.random() * (maxAngle - minAngle)) + minAngle;
+    const minLight = 65;
+    const maxLight = 87;
+
+    for(let i = 0;i <= neighborQty;i++){
+      const hue = (initialHue + angle * i) % 360;
+      const lightness = ~~(Math.random() * (maxLight - minLight)) + minLight;
+      colors[i] = `hsl(${hue}, 100%, ${lightness}%)`;
+    }
+
+    return colors;
   }
 
   private handleWheel(e: WheelEvent): void{
@@ -210,12 +246,41 @@ export class App extends React.Component<{}, AppState>{
     });
   }
 
+  private handleInputChange(e: Event): void{
+
+  }
+
+  private reset(): void{
+
+  }
+
+  private togglePlay(): void{
+
+  }
+
+  private recenterPosition(): void{
+
+  }
+
+  private zoomIn(): void{
+
+  }
+
+  private zoomOut(): void{
+
+  }
+
+  private zoomReset(): void{
+
+  }
+
   public render(){
     const canvasProps: CanvasProps = {
       width: this.state.width,
       height: this.state.height,
       cells: this.state.cells, 
       neighborQty: this.state.neighborQty, 
+      neighborColors: this.state.neighborColors,
       potentialCells: this.state.potentialCells,
       settings: this.state.renderSettings, 
       handleWheel: this.handleWheel,
@@ -224,9 +289,29 @@ export class App extends React.Component<{}, AppState>{
       handleClickMove: this.handleClickMove,
     };
 
+    const sidebarProps: SidebarProps = {
+      maxFPS: this.state.initSettings.maxFPS,
+      blur: this.state.renderSettings.blur,
+      sRule: this.state.initSettings.sRule,
+      bRule: this.state.initSettings.bRule,
+      seedQty: this.state.initSettings.seedQty,
+      seedArea: this.state.initSettings.seedArea,
+      brush: this.state.brush,
+      neighborhoodSize: this.state.neighborhoodSize,
+      neighborhoodType: this.state.neighborhoodType,
+      neighborhoodAddSelf: this.state.neighborhoodAddSelf,
+      handleInputChange: this.handleInputChange,
+      reset: this.reset,
+      togglePlay: this.togglePlay,
+      recenter: this.recenterPosition,
+      zoomIn: this.zoomIn,
+      zoomOut: this.zoomOut,
+      zoomReset: this.zoomReset
+    };
+
     return(
       <div>
-        <Sidebar />
+        <Sidebar {...sidebarProps}/>
         <Canvas {...canvasProps}/>
       </div>
     );
