@@ -66,7 +66,7 @@ module.exports = {
         test: /\.css$/,
         use:[
           {loader: 'style-loader'},
-          {loader: 'typings-for-css-modules-loader?modules&namedExport&camelCase&localIdentName[name]__[local]--[hash:base64:5]'},
+          {loader: 'typings-for-css-modules-loader?modules&namedExport&camelCase&localIdentName=[name]__[local]--[hash:base64:5]'},
           {loader: 'postcss-loader'}
         ]
       },
