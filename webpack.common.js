@@ -67,7 +67,17 @@ module.exports = {
         use:[
           {loader: 'style-loader'},
           {loader: 'typings-for-css-modules-loader?modules&namedExport&camelCase&localIdentName=[name]__[local]--[hash:base64:5]'},
-          {loader: 'postcss-loader'}
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('postcss-cssnext')(),
+                require('autoprefixer')(),
+                require('cssnano')()
+              ]
+            }
+          }
         ]
       },
       {

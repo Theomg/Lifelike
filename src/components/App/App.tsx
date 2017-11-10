@@ -62,9 +62,9 @@ export class App extends React.Component<{}, AppState>{
       initSettings: {
         bRule: [3],
         sRule: [2,3],
-        seedQty: 5000,
-        seedArea: [200, 300],
-        maxFPS: 60,
+        seedQty: 10000,
+        seedArea: [100, 100],
+        maxFPS: 20,
         neighborhood: neighborhood,
         isPaused: false
       },
@@ -256,14 +256,117 @@ export class App extends React.Component<{}, AppState>{
     });
   }
 
-  private handleInputChange(e: Event): void{
+  private handleInputValueBounds(input : HTMLInputElement){
+    if(input.type !== 'number' && input.type !== 'range'){
+      return input;
+    }
+    const min = (input.min === '') ? -Infinity : +input.min;
+    const max = (input.max === '') ? +Infinity : +input.max;
+    const value = (input.value === '') ? 0 : +input.value;
+    input.value = Math.max(min, Math.min(value, max)).toString();
+    return input;
+  }
 
+  private handleInputChange(e: Event): void{
+    const target = e.target as HTMLInputElement;
+    const input = this.handleInputValueBounds(target);
+    let shouldGenNeighborhoodColors = false;
+    switch(input.name){
+      case 'bRule':
+      case 'sRule':{
+        const rule = input.name;
+        const initSettings = this.state.initSettings;
+        const value = +input.value;
+        const isChecked = input.checked;
+        if(initSettings[rule].includes(value) && !isChecked){
+          const idx = initSettings[rule].indexOf(value);
+          initSettings[rule].splice(idx, 1);
+        }
+        else if(!initSettings[rule].includes(value) && isChecked){
+          initSettings[rule].push(value);
+        }
+        this.setState({
+          initSettings
+        })
+        break;
+      }
+      case 'seedQty':
+      case 'maxFPS':{
+        const name = input.name;
+        const initSettings = this.state.initSettings;
+        initSettings[name] = +input.value;
+        this.setState({
+          initSettings
+        });
+        break;
+      }
+      case 'seedAreaX':
+      case 'seedAreaY':{
+        const idx = (input.name[input.name.length - 1] === 'X') ? 0 : 1;
+        const initSettings = this.state.initSettings;
+        initSettings.seedArea[idx] = +input.value;
+        this.setState({
+          initSettings
+        });
+        break;
+      }
+      case 'blur':{
+        const renderSettings = this.state.renderSettings;
+        renderSettings.blur = +input.value;
+        this.setState({
+          renderSettings
+        });
+        break;
+      }
+      case 'neighborhoodSize':
+      case 'neighborhoodAddSelf':{
+        const name = input.name;
+        const value = (input.type === 'number') ? +input.value : input.checked;
+        const neighborhoodSize = (input.type === 'number') ? value as number : this.state.neighborhoodSize;
+        const neighborhoodAddSelf = (input.type !== 'number') ? value as boolean : this.state.neighborhoodAddSelf;
+        const initSettings = this.state.initSettings;
+        initSettings.neighborhood = this.generateNeighborhood(this.state.neighborhoodType,
+                                                              neighborhoodSize,
+                                                              neighborhoodAddSelf);
+        const neighborhoodLen = initSettings.neighborhood.length;
+        initSettings.bRule = initSettings.bRule.filter(r => r <= neighborhoodLen);
+        initSettings.sRule = initSettings.sRule.filter(r => r <= neighborhoodLen);
+        this.setState({
+          [name as any]: value,
+          initSettings
+        });
+        shouldGenNeighborhoodColors = true;
+        break;
+      }
+      case 'neighborhoodType':{
+        const neighborhoodType = (NeighborhoodType as any)[input.value];
+        shouldGenNeighborhoodColors = true;
+        const initSettings = this.state.initSettings;
+        initSettings.neighborhood = this.generateNeighborhood(neighborhoodType,
+                                                              this.state.neighborhoodSize,
+                                                              this.state.neighborhoodAddSelf);
+        const neighborhoodLen = initSettings.neighborhood.length;
+        initSettings.bRule = initSettings.bRule.filter(r => r <= neighborhoodLen);
+        initSettings.sRule = initSettings.sRule.filter(r => r <= neighborhoodLen);
+        this.setState({
+          neighborhoodType,
+          initSettings
+        });
+        break;
+      }
+    }
+    if(shouldGenNeighborhoodColors){
+      const neighborColors = this.generateNeighborColors(this.state.initSettings.neighborhood.length);
+      this.setState({
+        neighborColors
+      });
+    }
   }
 
   private reset(): void{
     const neighborColors = this.generateNeighborColors(this.state.initSettings.neighborhood.length);
     this.setState({
-      neighborColors: neighborColors,
+      neighborColors,
     });
 
     this.automata.stop();
@@ -334,6 +437,7 @@ export class App extends React.Component<{}, AppState>{
       seedQty: this.state.initSettings.seedQty,
       seedArea: this.state.initSettings.seedArea,
       brush: this.state.brush,
+      neighborhoodQty: this.state.initSettings.neighborhood.length,
       neighborhoodSize: this.state.neighborhoodSize,
       neighborhoodType: this.state.neighborhoodType,
       neighborhoodAddSelf: this.state.neighborhoodAddSelf,

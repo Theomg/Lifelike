@@ -5,7 +5,6 @@ import {InitSettings} from ".././Settings";
 export class Automata{
   settings: InitSettings;
   time: number = null;
-  waitTime: number;
   cells: numberTuple[];
   cellMap: Map<number, number> = new Map();
   neighborQty: number[];
@@ -25,7 +24,6 @@ export class Automata{
   }
 
   private init(): void{
-    this.waitTime = 1000 / this.settings.maxFPS;
     const cellLen = this.cells.length;
     for(let i = 0;i < cellLen; i++){
       this.cellMap.set(this.hashTuple(this.cells[i]), i);
@@ -68,9 +66,10 @@ export class Automata{
     if(this.time === null){
       this.time = timestamp;
     }
+    const waitTime = 1000 / this.settings.maxFPS;
     const dt = timestamp - this.time;
-    if(dt > this.waitTime && !this.settings.isPaused){
-      this.time = timestamp - (dt % this.waitTime);
+    if(dt > waitTime && !this.settings.isPaused){
+      this.time = timestamp - (dt % waitTime);
       this.update();
     }
     this.loopRaf = requestAnimationFrame(t => this.loop(t));

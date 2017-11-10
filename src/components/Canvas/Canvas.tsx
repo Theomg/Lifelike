@@ -53,7 +53,7 @@ export class Canvas extends React.Component<CanvasProps, {}>{
     //Apply blur/clear rect
     const blur = this.props.settings.blur;
     const blurAlpha = (1 - blur) + blur * .1;
-    this.ctx.fillStyle = `rgba(50, 50, 80,${blurAlpha})`;
+    this.ctx.fillStyle = `rgba(29, 29, 47,${blurAlpha})`;
     this.ctx.fillRect(0, 0, this.props.width, this.props.height);
 
     //Apply scale matrix

@@ -1,0 +1,37 @@
+form{
+  padding: 1em 2em;
+}
+label{
+  font-family: 'Lora', serif;
+}
+input[type="checkbox"]{
+  --display: block;
+}
+input[type="radio"]{
+  --display: block;
+}
+.titleLabel{
+  display: block;
+  padding-top: 1em;
+}
+.blockInput{
+  display: block;
+}
+.inputRadius{
+  width: 2em;
+}
+.inputArea{
+  width: 4em;
+}
+.inputCellQty{
+  width: 9em;
+}
+.inputBlur{
+  --display: block;
+}
+.inputFPS{
+  width: 3em;
+}
+.labelRule{
+  --display: block;
+}

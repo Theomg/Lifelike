@@ -1,23 +1,50 @@
+:root{
+  --base-color: rgb(246, 246, 250);
+  --background-color: rgb(230, 230, 240);
+  --accent-color: hsl(34, 100%, 65%);
+  --accent-color-dark: color(var(--accent-color) shade(5%));
+  --accent-color-light: color(var(--accent-color) tint(5%));
+}
+
+.sidebar{
+  width: 400px;
+  max-width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  transform: translateX(-360px);
+  transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  background-color: var(--background-color)
+}
+
+.sidebarOpen{
+  transform: translateX(0);
+}
+
 .sidebarMenu{
   display: flex;
   flex-direction: column;
   width: 40px;
   height: 100%;
   flex-shrink: 0;
-  background-color: hsl(34, 100%, 65%);
+  background-color: var(--accent-color);
 }
 
 .toggleSidebar{
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  background-color: hsl(34, 100%, 65%);
+  background-color: var(--accent-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
 
 .toggleSidebar:hover{
-  background-color: hsl(34, 100%, 60%);
+  background-color: var(--accent-color-dark);
+}
+
+.toggleSidebar:active{
+  background-color: var(--accent-color-light);
 }
 
 .hamburger{
@@ -32,7 +59,7 @@
 .hamburgerLine{
   width: 100%;
   height: 5px;
-  background-color: rgb(246, 246, 250);
+  background-color: var(--base-color);
   transition: transform 0.4s linear;
   transform-origin: left;
 }
@@ -52,36 +79,21 @@
   padding: .5em 0;
   width: 100%;
   border: 0;
-  background-color: hsl(34, 100%, 65%);
+  background-color: var(--accent-color);
   cursor: pointer;
 }
 
 .actionButton:hover{
-  background-color: hsl(34, 100%, 60%);
+  background-color: var(--accent-color-dark);
 }
 
 .actionButton:active{
-  background-color: hsl(34, 100%, 70%);
+  background-color: var(--accent-color-light);
 }
 
 .actionButtonReset{
   margin-top: 1em;
   padding: 1em 0;
-}
-
-.sidebar{
-  width: 400px;
-  max-width: 100%;
-  height: 100vh;
-  position: absolute;
-  display: flex;
-  transform: translateX(-360px);
-  transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
-  background-color: rgb(230, 230, 240);
-}
-
-.sidebarOpen{
-  transform: translateX(0);
 }
 
 .sidebarContent{
