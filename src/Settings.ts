@@ -4,6 +4,7 @@ export interface InitSettings {
   seedQty: number,
   seedArea: [number, number],
   maxFPS: number,
+  isPaused: boolean,
   neighborhood: [number, number][]
 }
 

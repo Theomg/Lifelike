@@ -9,6 +9,8 @@ export class Automata{
   cells: numberTuple[];
   cellMap: Map<number, number> = new Map();
   neighborQty: number[];
+  isRunning = true;
+  loopRaf: number;
 
   constructor(cells: numberTuple[], neighborQty: number[], settings: InitSettings){
     this.cells = cells;
@@ -19,16 +21,14 @@ export class Automata{
 
   //Works ok for smaller simulations, but a nicer hash function with a HashMap+buckets would be better
   private hashTuple(pair: numberTuple): number{
-    return (pair[0] * 2 ** 26) + pair[1];
+    return (pair[0] * Math.pow(2, 26)) + pair[1];
   }
 
   private init(): void{
     this.waitTime = 1000 / this.settings.maxFPS;
     const cellLen = this.cells.length;
-    if(cellLen > 0){
-      for(let i = 0;i < cellLen; i++){
-        this.cellMap.set(this.hashTuple(this.cells[i]), i)
-      }
+    for(let i = 0;i < cellLen; i++){
+      this.cellMap.set(this.hashTuple(this.cells[i]), i);
     }
     this.seed();
   }
@@ -54,16 +54,26 @@ export class Automata{
     }
   }
 
+  public stop(): void{
+    this.cells.length = 0;
+    this.neighborQty.length = 0;
+    this.isRunning = false;
+    cancelAnimationFrame(this.loopRaf);
+  }
+
   public loop(timestamp = 0): void{
+    if(!this.isRunning){
+      return;
+    }
     if(this.time === null){
       this.time = timestamp;
     }
     const dt = timestamp - this.time;
-    if(dt > this.waitTime){
+    if(dt > this.waitTime && !this.settings.isPaused){
       this.time = timestamp - (dt % this.waitTime);
       this.update();
     }
-    requestAnimationFrame(t => this.loop(t));  
+    this.loopRaf = requestAnimationFrame(t => this.loop(t));
   }
   
   private update(): void{

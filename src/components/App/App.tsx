@@ -65,7 +65,8 @@ export class App extends React.Component<{}, AppState>{
         seedQty: 5000,
         seedArea: [200, 300],
         maxFPS: 60,
-        neighborhood: neighborhood
+        neighborhood: neighborhood,
+        isPaused: false
       },
       cells: [],
       neighborQty: [],
@@ -84,6 +85,15 @@ export class App extends React.Component<{}, AppState>{
     this.handleClickEnd = this.handleClickEnd.bind(this);
     this.handleClickMove = this.handleClickMove.bind(this);
     this.updateDimensions = this.updateDimensions.bind(this);
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.reset = this.reset.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
+    this.recenterPosition = this.recenterPosition.bind(this);
+    this.zoomIn = this.zoomIn.bind(this);
+    this.zoomOut = this.zoomOut.bind(this);
+    this.zoomReset = this.zoomReset.bind(this);
+
   }
 
   public generateNeighborhood(type: NeighborhoodType,
@@ -251,27 +261,54 @@ export class App extends React.Component<{}, AppState>{
   }
 
   private reset(): void{
+    const neighborColors = this.generateNeighborColors(this.state.initSettings.neighborhood.length);
+    this.setState({
+      neighborColors: neighborColors,
+    });
 
+    this.automata.stop();
+    this.automata = new Automata(this.state.cells, this.state.neighborQty, this.state.initSettings);
+    this.automata.loop();
   }
 
   private togglePlay(): void{
-
+    const initSettings = this.state.initSettings;
+    initSettings.isPaused = !initSettings.isPaused;
+    this.setState({
+      initSettings
+    });
   }
 
   private recenterPosition(): void{
-
+    const renderSettings = this.state.renderSettings;
+    renderSettings.pos = [0, 0];
+    this.setState({
+      renderSettings
+    });
   }
 
   private zoomIn(): void{
-
+    const renderSettings = this.state.renderSettings;
+    renderSettings.scale *= 2;
+    this.setState({
+      renderSettings
+    });
   }
 
   private zoomOut(): void{
-
+    const renderSettings = this.state.renderSettings;
+    renderSettings.scale *= 0.5;
+    this.setState({
+      renderSettings
+    });
   }
 
   private zoomReset(): void{
-
+    const renderSettings = this.state.renderSettings;
+    renderSettings.scale = 1;
+    this.setState({
+      renderSettings
+    });
   }
 
   public render(){
@@ -300,6 +337,7 @@ export class App extends React.Component<{}, AppState>{
       neighborhoodSize: this.state.neighborhoodSize,
       neighborhoodType: this.state.neighborhoodType,
       neighborhoodAddSelf: this.state.neighborhoodAddSelf,
+      isPaused: this.state.initSettings.isPaused,
       handleInputChange: this.handleInputChange,
       reset: this.reset,
       togglePlay: this.togglePlay,

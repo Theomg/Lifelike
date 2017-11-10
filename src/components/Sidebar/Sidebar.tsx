@@ -4,6 +4,14 @@ import * as css from './Sidebar.css';
 import {Header} from '../Header';
 import {NeighborhoodType} from '../App/App';
 
+const centerIcon = require('../../assets/icons/crosshair.svg');
+const zoomInIcon = require('../../assets/icons/zoom-in.svg');
+const zoomOutIcon = require('../../assets/icons/zoom-out.svg');
+const zoomResetIcon = require('../../assets/icons/maximize.svg');
+const playIcon = require('../../assets/icons/play.svg');
+const pauseIcon = require('../../assets/icons/pause.svg');
+const resetIcon = require('../../assets/icons/refresh-cw.svg');
+
 interface SidebarState{
   isOpen: Boolean
 }
@@ -19,6 +27,7 @@ export interface SidebarProps{
   neighborhoodType: NeighborhoodType,
   neighborhoodSize: number,
   neighborhoodAddSelf: boolean,
+  isPaused: boolean,
   handleInputChange: any,
   togglePlay: any,
   reset: any,
@@ -29,11 +38,11 @@ export interface SidebarProps{
 }
 
 export class Sidebar extends React.Component<SidebarProps, SidebarState>{
-
   constructor(){
     super();
+
     this.state = {
-      isOpen: true
+      isOpen: (window.innerWidth > 500)
     };
 
     this.toggleOpen = this.toggleOpen.bind(this);
@@ -49,6 +58,12 @@ export class Sidebar extends React.Component<SidebarProps, SidebarState>{
   public render(){
     const sidebarClass = `${css.sidebar} ${this.state.isOpen ? css.sidebarOpen : ''}`;
     const hamburgerClass = `${css.hamburger} ${this.state.isOpen ? css.hamburgerOpen : ''}`;
+
+    const playPauseImg = {
+      src: this.props.isPaused ? playIcon : pauseIcon,
+      alt: this.props.isPaused ? 'Play' : 'Pause'
+    };
+
     return(
       <aside className={sidebarClass}>
         <section className={css.sidebarContent}>
@@ -63,7 +78,12 @@ export class Sidebar extends React.Component<SidebarProps, SidebarState>{
               </div>
             </div>
             <div>
-              <div>BTN</div>
+              <button className={css.actionButton} onClick={this.props.togglePlay}><img {...playPauseImg}/></button>
+              <button className={css.actionButton} onClick={this.props.zoomIn}><img src={zoomInIcon} alt="Zoom in"/></button>
+              <button className={css.actionButton} onClick={this.props.zoomOut}><img src={zoomOutIcon} alt="Zoom out"/></button>
+              <button className={css.actionButton} onClick={this.props.zoomReset}><img src={zoomResetIcon} alt="Reset zoom"/></button>
+              <button className={css.actionButton} onClick={this.props.recenter}><img src={centerIcon} alt="Center position"/></button>
+              <button className={`${css.actionButton} ${css.actionButtonReset}`} onClick={this.props.reset}><img src={resetIcon} alt="Reset"/></button>
             </div>
          </div>
       </aside>

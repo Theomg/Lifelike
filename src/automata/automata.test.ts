@@ -13,6 +13,7 @@ describe("Automata", ()=>{
       seedQty: 0,
       seedArea: [10, 10],
       maxFPS: 60,
+      isPaused: false,
       neighborhood: [[-1, -1], [0, -1], [+1, -1],
                      [-1,  0],          [+1,  0],
                      [-1, +1], [0, +1], [+1, +1]]
