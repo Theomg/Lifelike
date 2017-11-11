@@ -1,0 +1,59 @@
+/* === Lora - regular */
+@font-face {
+	font-family: 'Lora';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/Lora-Regular.eot");
+	src: local("Lora Regular"),
+		local("Lora-Regular"),
+		url("./font/Lora-Regular.eot") format("embedded-opentype"),
+		url("./font/Lora-Regular.woff2") format("woff2"),
+		url("./font/Lora-Regular.woff") format("woff"),
+		url("./font/Lora-Regular.ttf") format("truetype"),
+		url("./font/Lora-Regular.svg") format("svg");
+}
+
+/* === Lora - 700 */
+@font-face {
+	font-family: 'Lora';
+	font-style: normal;
+	font-weight: 700;
+	src: url("./font/Lora-Bold.eot");
+	src: local("Lora Bold"),
+		local("Lora-Bold"),
+		url("./font/Lora-Bold.eot") format("embedded-opentype"),
+		url("./font/Lora-Bold.woff2") format("woff2"),
+		url("./font/Lora-Bold.woff") format("woff"),
+		url("./font/Lora-Bold.ttf") format("truetype"),
+		url("./font/Lora-Bold.svg") format("svg");
+}
+
+/* === Muli - regular */
+@font-face {
+	font-family: 'Muli';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/Muli-Regular.eot");
+	src: local("Muli Regular"),
+		local("Muli-Regular"),
+		url("./font/Muli-Regular.eot") format("embedded-opentype"),
+		url("./font/Muli-Regular.woff2") format("woff2"),
+		url("./font/Muli-Regular.woff") format("woff"),
+		url("./font/Muli-Regular.ttf") format("truetype"),
+		url("./font/Muli-Regular.svg") format("svg");
+}
+
+/* === Muli - 700 */
+@font-face {
+	font-family: 'Muli';
+	font-style: normal;
+	font-weight: 700;
+	src: url("./font/Muli-Bold.eot");
+	src: local("Muli Bold"),
+		local("Muli-Bold"),
+		url("./font/Muli-Bold.eot") format("embedded-opentype"),
+		url("./font/Muli-Bold.woff2") format("woff2"),
+		url("./font/Muli-Bold.woff") format("woff"),
+		url("./font/Muli-Bold.ttf") format("truetype"),
+		url("./font/Muli-Bold.svg") format("svg");
+}
