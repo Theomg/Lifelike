@@ -1,0 +1,48 @@
+{
+  "icons": [
+    {
+      "src": "icon_1024x1024.1928fa86e3fc43d9298eee2d835ef9b7.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_512x512.e8544e0e804f9513c58edfffebb147b1.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_384x384.efb4029b6a40e47e5143b9297f8c0fc3.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_256x256.08032d77c8ae359c0e2e2bdceb8d8d85.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_192x192.9cbbee66e391fa8927f726c5274b724c.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_128x128.56206c0dd12d5539226c562c8bee952f.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_96x96.1aacab12ae9a40cf20e6d40fe4d4b18f.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Lifelike",
+  "orientation": "portrait",
+  "display": "fullscreen",
+  "start_url": ".",
+  "publicPath": null,
+  "description": "A Life-like Cellular Automaton",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "short_name": "Lifelike"
+}
