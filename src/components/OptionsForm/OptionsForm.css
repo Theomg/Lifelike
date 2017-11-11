@@ -1,37 +1,140 @@
-form{
-  padding: 1em 2em;
+:root{
+  --dark-color: hsl(240, 5%, 15%);
+  --accent-color: hsl(216, 99%, 65%);
+  --background-color: hsl(240, 29%, 97%);
 }
-label{
+
+form {
+  padding: 1em 2em;
+  color: var(--dark-color);
   font-family: 'Lora', serif;
 }
-input[type="checkbox"]{
-  --display: block;
+
+input[type="number"] {
+  border: 0px;
+  background-color: var(--background-color);
+  font-family: 'Muli', sans-serif;
+  color: var(--dark-color);
 }
-input[type="radio"]{
-  --display: block;
+
+input[type="checkbox"] {
+  display: none;
 }
-.titleLabel{
+
+input[type="checkbox"]+.titleLabel:before{
+  content: '';
+  display: inline-block;
+  width: .65em;
+  height: .65em;
+  margin-right: .5em;
+  background-color: var(--accent-color);
+  border: .1em solid var(--accent-color);
+  transition: background-color 0.2s;
+}
+
+input[type="checkbox"]:checked+.titleLabel:before{
+  background-color: var(--background-color);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]+label:before {
+  content: '';
+  display: inline-block;
+  width: .65em;
+  height: .65em;
+  margin-right: .5em;
+  background-color: var(--accent-color);
+  border: .1em solid var(--accent-color);
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+input[type="radio"]:checked+label:before {
+  background-color: var(--background-color);
+}
+
+.titleLabel {
+  font-weight: 700;
   display: block;
   padding-top: 1em;
 }
-.blockInput{
+
+.blockInput {
   display: block;
+  margin-top: 0.25em;
 }
-.inputRadius{
+
+.inputRadius {
   width: 2em;
 }
-.inputArea{
+
+.inputArea {
   width: 4em;
+  margin-right: 1em;
 }
-.inputCellQty{
+
+.inputArea+.inputArea{
+  margin-right: 0;
+  margin-left: 1em;
+}
+
+.inputCellQty {
   width: 9em;
 }
-.inputBlur{
-  --display: block;
-}
-.inputFPS{
+
+.inputFPS {
   width: 3em;
 }
-.labelRule{
-  --display: block;
+
+.labelRule {
+  display: inline-block;
+  min-width: 1em;
+  height: 1em;
+  line-height: 1em;
+  margin-top: .5em;
+  margin-right: .5em;
+  border: .15em solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+input[type="checkbox"]:checked+.labelRule{
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+.inputBlur{
+  -webkit-appearance: none; 
+  background-color: var(--background-color);
+  height: .5em;
+  width: 9em;
+  border: 0;
+  outline: none;
+}
+
+.inputBlur::range-track {
+  background-color: var(--background-color);
+  width: 100%;
+  height: .5em;
+}
+
+.inputBlur::range-thumb {
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  transition: background-color .2s;
+  margin-top: -.25em;
+}
+
+.inputBlur::range-thumb:hover {
+  background-color: color(var(--accent-color) shade(10%));
 }

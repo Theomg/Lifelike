@@ -3,7 +3,7 @@ export const blockInput: string;
 export const inputRadius: string;
 export const inputArea: string;
 export const inputCellQty: string;
-export const inputBlur: string;
 export const inputFPS: string;
 export const inputFps: string;
 export const labelRule: string;
+export const inputBlur: string;

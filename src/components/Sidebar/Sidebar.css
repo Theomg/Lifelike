@@ -1,7 +1,7 @@
 :root{
   --base-color: rgb(246, 246, 250);
   --background-color: rgb(230, 230, 240);
-  --accent-color: hsl(34, 100%, 65%);
+  --accent-color: hsl(216, 99%, 65%);
   --accent-color-dark: color(var(--accent-color) shade(5%));
   --accent-color-light: color(var(--accent-color) tint(5%));
 }
@@ -51,7 +51,7 @@
   display:flex;
   width: 25px;
   height: 25px;
-  padding-top: 2rem;
+  padding-top: 1em;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -103,4 +103,5 @@
 
 .sidebarOpen > .sidebarContent{
   flex-shrink: 1;
+  overflow-y: auto;
 }

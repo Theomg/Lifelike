@@ -40,8 +40,8 @@ module.exports = {
     }),
     new GoogleFontsPlugin({
       fonts: [
-        { family: "Lora" },
-        { family: "Muli"}
+        { family: "Lora", variants: ['400', '700'] },
+        { family: "Muli", variants: ['400', '700'] }
       ]
     }),
     new webpack.WatchIgnorePlugin([
@@ -73,6 +73,7 @@ module.exports = {
               ident: 'postcss',
               plugins: (loader) => [
                 require('postcss-cssnext')(),
+                require('postcss-input-range')(),
                 require('autoprefixer')(),
                 require('cssnano')()
               ]

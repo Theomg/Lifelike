@@ -23,18 +23,23 @@ export class OptionsForm extends React.Component<OptionsFormProps, {}>{
     super();
   }
 
-  private makeCheckboxes = (name: string, baseValues: number[], checkedValues: number[]) => baseValues.map(v => {
-    const isChecked = checkedValues.includes(v);
-    return (
-      <label className={css.labelRule} key={v}>{v}
-        <input checked={isChecked}
-               name={name}
-               type="checkbox" 
-               value={v} 
-               onChange={this.props.handleInputChange}
-        />
+  private makeCheckboxes = (name: string, baseValues: number[], checkedValues: number[]) => baseValues.map(value => {
+    const isChecked = checkedValues.includes(value);
+    return ([
+      <input checked={isChecked}
+             name={name}
+             id={`${name}-${value}`}
+             type="checkbox" 
+             value={value} 
+             key={`input-${value}`}
+             onChange={this.props.handleInputChange}
+      />,
+      <label htmlFor={`${name}-${value}`}
+             className={css.labelRule}
+             key={`label-${value}`}>
+      {value}
       </label>
-    );
+    ]);
   });
 
   public render(){
@@ -46,16 +51,17 @@ export class OptionsForm extends React.Component<OptionsFormProps, {}>{
                                                   .filter((v: any) => isNaN(+v))
                                                   .map((v: string) => {
       const isChecked = (this.props.neighborhoodType === +NeighborhoodType[v as any]);
-      return(
-        <label className={css.blockInput} key={v}>{v.replace(/([a-z])([A-Z])/g, '$1 $2')}
-          <input type="radio"
-                 checked={isChecked}
-                 name="neighborhoodType"
-                 value={v}
-                 onChange={this.props.handleInputChange}
-          />
-        </label>
-      );
+      return([
+        <input type="radio"
+               checked={isChecked}
+               name="neighborhoodType"
+               id={`neighborhoodType-${v}`}
+               value={v}
+               key={`input-${v}`}
+               onChange={this.props.handleInputChange}
+        />,
+        <label htmlFor={`neighborhoodType-${v}`} className={css.blockInput} key={`label-${v}`}>{v.replace(/([a-z])([A-Z])/g, '$1 $2')}</label>
+      ]);
     });
 
     return(
@@ -100,7 +106,7 @@ export class OptionsForm extends React.Component<OptionsFormProps, {}>{
                 min="0"
                 className={css.inputArea}
         />
-        x
+        by
         <input type="number"
                 name="seedAreaY"
                 onChange={this.props.handleInputChange}
@@ -115,23 +121,24 @@ export class OptionsForm extends React.Component<OptionsFormProps, {}>{
         {sRuleCheckboxes}
         <label className={css.titleLabel}>Neighborhood Type</label>
         {neighborhoodTypeRadios}
-        <label className={css.titleLabel}>Neighborhood Radius
+        <label className={css.titleLabel}>
+          Neighborhood Radius
           <input type="number"
                  name="neighborhoodSize"
                  onChange={this.props.handleInputChange}
                  value={this.props.neighborhoodSize}
                  min="1"
-                 className={`${css.blockInput} ${css.inputRadius}`}
+                 className={`${css.inputRadius} ${css.blockInput}`}
           />
         </label>
-        <label className={css.titleLabel}>Add self to neighborhood
-          <input type="checkbox"
-                 name="neighborhoodAddSelf"
-                 onChange={this.props.handleInputChange}
-                 checked={this.props.neighborhoodAddSelf}
-                 className={`${css.blockInput}`}
-          />
-        </label>
+        <input type="checkbox"
+               name="neighborhoodAddSelf"
+               id="neighborhoodAddSelf"
+               onChange={this.props.handleInputChange}
+               checked={this.props.neighborhoodAddSelf}
+               className={`${css.blockInput}`}
+        />
+        <label htmlFor="neighborhoodAddSelf" className={css.titleLabel}>Add self to neighborhood</label>
       </form>
     );
   }

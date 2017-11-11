@@ -18,7 +18,6 @@ export class Automata{
     this.init();
   }
 
-  //Works ok for smaller simulations, but a nicer hash function with a HashMap+buckets would be better
   private hashTuple(pair: numberTuple): number{
     return (pair[0] * Math.pow(2, 26)) + pair[1];
   }
@@ -41,8 +40,8 @@ export class Automata{
       let newCell: numberTuple;
       let newCellHash: number;
       do{
-        newCell = [~~(Math.random() * width - width/2 + windowWidth/2),
-                   ~~(Math.random() * height - height/2 + windowHeight/2)];
+        newCell = [~~(Math.random() * width) + ~~(windowWidth/2 - width/2),
+                   ~~(Math.random() * height) + ~~(windowHeight/2 - height/2)];
         newCellHash = this.hashTuple(newCell);
       }while(this.cellMap.has(newCellHash));
       const idx = this.cells.length;
