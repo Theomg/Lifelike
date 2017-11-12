@@ -28,8 +28,8 @@ module.exports = {
     new PWAManifestPlugin({
       name: 'Lifelike',
       description: 'A Life-like Cellular Automaton',
-      background_color: '#000000',
-      theme_color: '#000000',
+      background_color: '#1d1d2f',
+      theme_color: '#1d1d2f',
       display: 'fullscreen',
       icons: [
         {

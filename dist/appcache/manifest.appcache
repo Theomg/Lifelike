@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:11/11/2017, 6:33:19 PM
+#ver:11/12/2017, 3:57:43 PM
 #plugin:4.8.4
 
 CACHE:
@@ -14,27 +14,27 @@ CACHE:
 ../font/Muli-Bold.woff2
 ../font/Muli-Bold.ttf
 ../font/Muli-Bold.svg
-../font/Lora-Regular.eot
-../font/Lora-Regular.woff
 ../font/Lora-Regular.woff2
-../font/Lora-Regular.ttf
+../font/Lora-Regular.svg
+../font/Lora-Regular.woff
+../font/Lora-Regular.eot
 ../font/Lora-Bold.eot
+../font/Lora-Regular.ttf
 ../font/Lora-Bold.woff
 ../font/Lora-Bold.woff2
 ../font/Lora-Bold.ttf
-../font/Lora-Regular.svg
 ../font/Lora-Bold.svg
 ../bundle.js
 ../favicon.png
 ../
-../manifest.8232f4aa378c013c9f4d95abaeb496f9.json
-../icon_1024x1024.1928fa86e3fc43d9298eee2d835ef9b7.png
-../icon_512x512.e8544e0e804f9513c58edfffebb147b1.png
-../icon_384x384.efb4029b6a40e47e5143b9297f8c0fc3.png
-../icon_256x256.08032d77c8ae359c0e2e2bdceb8d8d85.png
-../icon_192x192.9cbbee66e391fa8927f726c5274b724c.png
-../icon_128x128.56206c0dd12d5539226c562c8bee952f.png
-../icon_96x96.1aacab12ae9a40cf20e6d40fe4d4b18f.png
+../manifest.ee9a11377982a365a8aeae5b9095fe11.json
+../icon_1024x1024.e2b64b4517085539718fce3445ea5503.png
+../icon_512x512.acdb5ccfc77541d1222dc75b6d5709d5.png
+../icon_384x384.5b6afd51415ad47cf3d3dc9f3078f6d1.png
+../icon_256x256.12f380e26efe38fc82d932621016384e.png
+../icon_192x192.8344e88a0fd983ee0cf094d83abf6a4b.png
+../icon_128x128.ae61cd1d978b4d25b02cf4e5c1d1a338.png
+../icon_96x96.b3fcabdb7d68decce0ebd6491d500085.png
 
 NETWORK:
 *

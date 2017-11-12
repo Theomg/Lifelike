@@ -34,6 +34,7 @@ enum InputState{
 
 export class App extends React.Component<{}, AppState>{
   private inputState = InputState.Idle;
+  private isTouch = false;
   private moveDistForPan = 7;
 
   private clickPos: [number, number][] = [[null, null], [null, null]];
@@ -93,7 +94,6 @@ export class App extends React.Component<{}, AppState>{
     this.zoomIn = this.zoomIn.bind(this);
     this.zoomOut = this.zoomOut.bind(this);
     this.zoomReset = this.zoomReset.bind(this);
-
   }
 
   public generateNeighborhood(type: NeighborhoodType,
@@ -156,6 +156,12 @@ export class App extends React.Component<{}, AppState>{
   }
 
   private handleClickStart(e: MouseEvent|TouchEvent){
+    if((e as TouchEvent).touches !== undefined){
+      this.isTouch = true;
+    }
+    else{
+      this.isTouch = false;
+    }
     this.inputState = InputState.ClickStart;
     this.clickPos = this.clickToPositions(e);
     this.posOnClick = this.state.renderSettings.pos;
@@ -181,13 +187,9 @@ export class App extends React.Component<{}, AppState>{
   private handleClickMove(e: MouseEvent|TouchEvent){
     const clicks = this.clickToPositions(e);
     const cell: [number, number] = this.positionToCell(clicks[0]);
-    const brush = this.state.brush.map(pos => {
-      return [pos[0] + cell[0],
-              pos[1] + cell[1]] as [number, number];
-    });
-    this.setState({
-      potentialCells: brush
-    });
+    if(!this.isTouch){
+      this.setPotentialCells(cell);
+    }
     //Differentiate click from drag
     if(this.inputState === InputState.ClickStart){
       const diff = [this.clickPos[0][0] - clicks[0][0],
@@ -208,6 +210,16 @@ export class App extends React.Component<{}, AppState>{
         renderSettings
       });
     }
+  }
+
+  private setPotentialCells(clickedCell: [number, number]){
+    const brush = this.state.brush.map(pos => {
+      return [pos[0] + clickedCell[0],
+              pos[1] + clickedCell[1]] as [number, number];
+    });
+    this.setState({
+      potentialCells: brush
+    });
   }
 
   //Translates either mouse click or touches to position array

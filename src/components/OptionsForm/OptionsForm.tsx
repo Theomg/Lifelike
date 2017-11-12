@@ -99,21 +99,23 @@ export class OptionsForm extends React.Component<OptionsFormProps, {}>{
         </label>
         <label className={css.titleLabel}>Initial cells area</label>
         <input type="number"
-                name="seedAreaX"
-                onChange={this.props.handleInputChange}
-                value={this.props.seedArea[0]}
-                step="50"
-                min="0"
-                className={css.inputArea}
+               aria-label="Initial cells width"
+               name="seedAreaX"
+               onChange={this.props.handleInputChange}
+               value={this.props.seedArea[0]}
+               step="50"
+               min="0"
+               className={css.inputArea}
         />
         by
         <input type="number"
-                name="seedAreaY"
-                onChange={this.props.handleInputChange}
-                value={this.props.seedArea[1]}
-                step="50"
-                min="0"
-                className={css.inputArea}
+               aria-label="Initial cells height"
+               name="seedAreaY"
+               onChange={this.props.handleInputChange}
+               value={this.props.seedArea[1]}
+               step="50"
+               min="0"
+               className={css.inputArea}
         />
         <label className={css.titleLabel}>Birth condition</label>
         {bRuleCheckboxes}
